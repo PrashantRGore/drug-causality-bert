@@ -45,7 +45,10 @@ def preprocess_text(text):
     return text.strip()
 
 def classify_causality(pdf_text, threshold=0.5, max_length=96, batch_size=32):
-    nltk.download('punkt', quiet=True)
+    try:
+        nltk.download('punkt', quiet=True)
+    except:
+        pass
     cleaned_text = preprocess_text(pdf_text)
     sentences = sent_tokenize(cleaned_text)
     model_path = "models/production_model_final"
