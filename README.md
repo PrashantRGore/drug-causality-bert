@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+The app link is drug-causality-bert-k6eqkuzeuuq3ggsbxp7lcy
 # Drug Causality Classification
 
 BioBERT-based system for drug-adverse event causality assessment
