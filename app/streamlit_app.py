@@ -1,7 +1,8 @@
 import streamlit as st
 import tempfile
 import os
-from pathlib import Path
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.inference import CausalityClassifier, extract_text_from_pdf, classify_causality, process_pdf_file, process_multiple_pdfs
 
 st.title("Drug Causality Classifier")
