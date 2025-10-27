@@ -1,0 +1,16 @@
+{
+  "best_params": {
+    "learning_rate": 3.758180918998249e-05,
+    "num_train_epochs": 1,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 4
+  },
+  "final_results": {
+    "accuracy": 0.9758909853249476,
+    "f1": 0.9758881040529953,
+    "precision": 0.9761185621296976,
+    "recall": 0.9758909853249476
+  },
+  "optuna_source": "Trial 1",
+  "training_date": "2025-10-25T16:06:34.368403"
+}

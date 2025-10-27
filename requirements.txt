@@ -1,0 +1,8 @@
+torch>=2.1.0
+transformers>=4.35.0
+pandas
+numpy
+scikit-learn
+nltk
+PyPDF2
+streamlit
