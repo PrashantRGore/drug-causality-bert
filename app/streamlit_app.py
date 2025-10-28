@@ -3,6 +3,9 @@ import tempfile
 import os
 import sys
 from pathlib import Path
+import nltk
+
+nltk.download('punkt')
 
 # Add parent directory to Python path for imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -338,3 +341,4 @@ st.sidebar.markdown(
     "- Clinical report analysis\n"
     "- Regulatory compliance"
 )
+
