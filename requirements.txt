@@ -3,6 +3,6 @@ transformers>=4.35.0
 pandas
 numpy
 scikit-learn
-nltk
-PyPDF2
-streamlit
+nltk>=3.7
+PyPDF2>=3.0.1
+streamlit>=1.22.0
