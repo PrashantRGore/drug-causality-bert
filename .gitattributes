@@ -1,1 +1,5 @@
 models/production_model_final/model.safetensors filter=lfs diff=lfs merge=lfs -text
+\# filter=lfs diff=lfs merge=lfs -text
+only filter=lfs diff=lfs merge=lfs -text
+needed filter=lfs diff=lfs merge=lfs -text
+once filter=lfs diff=lfs merge=lfs -text
