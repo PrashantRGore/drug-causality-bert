@@ -7,10 +7,17 @@ import nltk
 
 nltk.download('punkt')
 
-# Add parent directory to Python path for imports
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Add parent directory to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.inference import CausalityClassifier, extract_text_from_pdf, classify_causality, process_pdf_file, process_multiple_pdfs
+# NOW THIS IMPORT WILL WORK!
+from src.inference import (
+    CausalityClassifier, 
+    extract_text_from_pdf, 
+    classify_causality, 
+    process_pdf_file, 
+    process_multiple_pdfs
+)
 
 # App Configuration
 st.set_page_config(
@@ -341,4 +348,5 @@ st.sidebar.markdown(
     "- Clinical report analysis\n"
     "- Regulatory compliance"
 )
+
 
