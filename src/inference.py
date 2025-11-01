@@ -3,14 +3,16 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from pathlib import Path
 import PyPDF2
-from nltk.tokenize import sent_tokenize
-import nltk
-import ssl
 import json
 from datetime import datetime
 from typing import Union, List, Dict
+import re
 
-# Handle SSL certificate issues
+# NLTK with robust error handling
+import nltk
+import ssl
+
+# SSL fix for NLTK
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -18,21 +20,59 @@ except AttributeError:
 else:
     ssl._create_default_https_context = _create_unverified_https_context
 
-# Download all required NLTK data
-def download_nltk_data():
-    """Download required NLTK data packages"""
+# Enhanced NLTK data download with retry
+def download_nltk_data_robust():
+    """Download NLTK data with multiple attempts and fallbacks"""
+    import os
+    
+    # Set NLTK data path explicitly
+    nltk_data_dir = '/home/appuser/nltk_data'
+    if not os.path.exists(nltk_data_dir):
+        try:
+            os.makedirs(nltk_data_dir, exist_ok=True)
+        except:
+            pass
+    
+    if nltk_data_dir not in nltk.data.path:
+        nltk.data.path.insert(0, nltk_data_dir)
+    
     packages = ['punkt', 'punkt_tab']
     for package in packages:
-        try:
-            nltk.data.find(f'tokenizers/{package}')
-        except LookupError:
+        for attempt in range(3):  # Try 3 times
             try:
-                nltk.download(package, quiet=True)
-            except Exception as e:
-                print(f"Warning: Could not download {package}: {e}")
+                nltk.data.find(f'tokenizers/{package}')
+                print(f"✓ {package} already available")
+                break
+            except LookupError:
+                try:
+                    print(f"Downloading {package} (attempt {attempt + 1})...")
+                    nltk.download(package, download_dir=nltk_data_dir, quiet=False)
+                    print(f"✓ {package} downloaded successfully")
+                    break
+                except Exception as e:
+                    print(f"Warning: Could not download {package}: {e}")
+                    if attempt == 2:
+                        print(f"Failed to download {package} after 3 attempts")
 
 # Download on import
-download_nltk_data()
+download_nltk_data_robust()
+
+# Fallback sentence tokenizer using regex
+def simple_sentence_tokenize(text):
+    """Simple regex-based sentence tokenizer as fallback"""
+    # Split on common sentence boundaries
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    return [s.strip() for s in sentences if s.strip()]
+
+# Safe sentence tokenization with fallback
+def safe_sent_tokenize(text):
+    """Tokenize with NLTK, fallback to regex if NLTK fails"""
+    try:
+        from nltk.tokenize import sent_tokenize
+        return sent_tokenize(text)
+    except Exception as e:
+        print(f"NLTK tokenization failed ({e}), using fallback...")
+        return simple_sentence_tokenize(text)
 
 class CausalityClassifier:
     def __init__(self, model_path='./models/production_model_final', threshold=0.5):
@@ -70,10 +110,20 @@ def extract_text_from_pdf(pdf_path):
 
 def classify_causality(pdf_text, model_path='./models/production_model_final', threshold=0.5, verbose=False):
     classifier = CausalityClassifier(model_path, threshold)
-    sentences = sent_tokenize(pdf_text)
+    
+    # Use safe tokenization with fallback
+    sentences = safe_sent_tokenize(pdf_text)
+    
+    if verbose:
+        print(f"Tokenized {len(sentences)} sentences")
+    
     related_count = 0
     sentence_details = []
+    
     for sent in sentences:
+        if not sent.strip():
+            continue
+            
         result = classifier.predict(sent, return_probs=True)
         if result['label'] == 1:
             related_count += 1
@@ -82,7 +132,9 @@ def classify_causality(pdf_text, model_path='./models/production_model_final', t
                 'probability_related': result['probabilities']['related'],
                 'confidence': result['confidence']
             })
+    
     sentence_details.sort(key=lambda x: x['probability_related'], reverse=True)
+    
     return {
         'final_classification': 'related' if related_count > 0 else 'not related',
         'confidence_score': related_count / len(sentences) if sentences else 0,
