@@ -1,224 +1,351 @@
-<<<<<<< HEAD
-# src/inference.py
+"""
+Drug-Adverse Event Causality Classification
+Complete inference module with PDF processing capabilities
+"""
 
 import torch
+import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from pathlib import Path
 import PyPDF2
-import numpy as np
-import re
 from nltk.tokenize import sent_tokenize
 import nltk
+import json
+from datetime import datetime
+from typing import Union, List, Dict
 
-class CausalityClassifier:
-    def __init__(self, model_path):
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_path)
-        self.model.eval()
-
-    def predict(self, text, threshold=0.5):
-        inputs = self.tokenizer(text, return_tensors="pt", truncation=True, max_length=96)
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-            probs = torch.softmax(outputs.logits, dim=1).numpy()[0]
-        pred = 1 if probs[1] > threshold else 0
-        return {
-            'prediction': 'related' if pred == 1 else 'not related',
-            'confidence': float(probs[pred]),
-            'probabilities': {
-                'not_related': float(probs[0]),
-                'related': float(probs[1])
-            }
-        }
-
-def extract_text_from_pdf(pdf_path):
-    with open(pdf_path, 'rb') as f:
-        reader = PyPDF2.PdfReader(f)
-        text = ""
-        for page in reader.pages:
-            text += page.extract_text()
-    return text
-
-def preprocess_text(text):
-    text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'[^\w\s\.,;:!?\-\(\)]', '', text)
-    text = ' '.join([w for w in text.split() if len(w) > 1])
-    return text.strip()
-
-def classify_causality(pdf_text, threshold=0.5, max_length=96, batch_size=32):
+# Download NLTK data if not available
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
     nltk.download('punkt', quiet=True)
-    cleaned_text = preprocess_text(pdf_text)
-    sentences = sent_tokenize(cleaned_text)
-    model_path = "models/production_model_final"
-    classifier = CausalityClassifier(model_path)
-    classifications, sentence_details = [], []
-    num_batches = (len(sentences) + batch_size - 1) // batch_size
-    with torch.no_grad():
-        for batch_idx in range(num_batches):
-            start_idx = batch_idx * batch_size
-            end_idx = min((batch_idx + 1) * batch_size, len(sentences))
-            batch_sentences = sentences[start_idx:end_idx]
-            inputs = classifier.tokenizer(
-                batch_sentences,
-                return_tensors="pt",
-                truncation=True,
-                padding=True,
-                max_length=max_length,
-            )
-            outputs = classifier.model(**inputs)
-            probs = torch.softmax(outputs.logits, dim=1)
-            for i, sent in enumerate(batch_sentences):
-                prob_related = probs[i][1].item()
-                pred = 1 if prob_related > threshold else 0
-                classifications.append(pred)
-                sentence_details.append({
-                    'sentence': sent[:100] + ('...' if len(sent) > 100 else ''),
-                    'probability_related': prob_related,
-                    'prediction': 'related' if pred == 1 else 'not related',
-                    'confidence': max(prob_related, 1 - prob_related)
-                })
-    num_related = sum(classifications)
-    num_not_related = len(classifications) - num_related
-    final_classification = "related" if num_related > 0 else "not related"
-    confidence_score = num_related / len(classifications) if classifications else 0
-    sentence_details.sort(key=lambda x: x['probability_related'], reverse=True)
-    results = {
-        'final_classification': final_classification,
-        'confidence_score': confidence_score,
-        'related_sentences': num_related,
-        'not_related_sentences': num_not_related,
-        'total_sentences': len(sentences),
-        'top_related_sentences': sentence_details[:5],
-        'threshold_used': threshold
-    }
-    return results
+    nltk.download('punkt_tab', quiet=True)
 
-def process_pdf_file(pdf_path, threshold=0.5):
-    pdf_text = extract_text_from_pdf(pdf_path)
-    results = classify_causality(pdf_text, threshold=threshold)
-    results["pdf_file"] = Path(pdf_path).name
-    return results
-
-def process_multiple_pdfs(pdf_paths, threshold=0.5):
-    all_results = []
-    for pdf_path in pdf_paths:
-        try:
-            res = process_pdf_file(pdf_path, threshold)
-            all_results.append(res)
-        except Exception as e:
-            all_results.append({"pdf_file": Path(pdf_path).name, "error": str(e), "final_classification": "error"})
-    return all_results
-=======
-# src/inference.py
-
-import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from pathlib import Path
-import PyPDF2
-import numpy as np
-import re
-from nltk.tokenize import sent_tokenize
-import nltk
 
 class CausalityClassifier:
-    def __init__(self, model_path):
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_path)
+    """
+    Drug-Adverse Event Causality Classifier using BioBERT
+    
+    Args:
+        model_path: Path to trained model directory
+        threshold: Classification threshold (default: 0.5)
+    """
+    
+    def __init__(self, model_path='./models/production_model_final', threshold=0.5):
+        self.model_path = Path(model_path)
+        self.threshold = threshold
+        
+        # Load model and tokenizer
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
+        self.model = AutoModelForSequenceClassification.from_pretrained(self.model_path)
         self.model.eval()
-
-    def predict(self, text, threshold=0.5):
-        inputs = self.tokenizer(text, return_tensors="pt", truncation=True, max_length=96)
+    
+    def predict(self, text, return_probs=False):
+        """
+        Predict causality for single text
+        
+        Args:
+            text: Input text
+            return_probs: Return probability distribution
+            
+        Returns:
+            dict with prediction, confidence, and optionally probabilities
+        """
+        # Tokenize
+        inputs = self.tokenizer(
+            text,
+            return_tensors="pt",
+            truncation=True,
+            padding=True,
+            max_length=96
+        )
+        
+        # Predict
         with torch.no_grad():
             outputs = self.model(**inputs)
             probs = torch.softmax(outputs.logits, dim=1).numpy()[0]
-        pred = 1 if probs[1] > threshold else 0
-        return {
+            pred = 1 if probs[1] > self.threshold else 0
+        
+        result = {
             'prediction': 'related' if pred == 1 else 'not related',
             'confidence': float(probs[pred]),
-            'probabilities': {
+            'label': int(pred)
+        }
+        
+        if return_probs:
+            result['probabilities'] = {
                 'not_related': float(probs[0]),
                 'related': float(probs[1])
             }
-        }
+        
+        return result
+    
+    def predict_batch(self, texts):
+        """Predict causality for multiple texts"""
+        return [self.predict(text, return_probs=True) for text in texts]
 
-def extract_text_from_pdf(pdf_path):
-    with open(pdf_path, 'rb') as f:
-        reader = PyPDF2.PdfReader(f)
-        text = ""
-        for page in reader.pages:
-            text += page.extract_text()
-    return text
 
-def preprocess_text(text):
-    text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'[^\w\s\.,;:!?\-\(\)]', '', text)
-    text = ' '.join([w for w in text.split() if len(w) > 1])
-    return text.strip()
-
-def classify_causality(pdf_text, threshold=0.5, max_length=96, batch_size=32):
+def extract_text_from_pdf(pdf_path: str) -> str:
+    """
+    Extract text from PDF file
+    
+    Args:
+        pdf_path: Path to PDF file
+        
+    Returns:
+        Extracted text as string
+    """
     try:
-        nltk.download('punkt', quiet=True)
-    except:
-        pass
-    cleaned_text = preprocess_text(pdf_text)
-    sentences = sent_tokenize(cleaned_text)
-    model_path = "models/production_model_final"
-    classifier = CausalityClassifier(model_path)
-    classifications, sentence_details = [], []
-    num_batches = (len(sentences) + batch_size - 1) // batch_size
-    with torch.no_grad():
-        for batch_idx in range(num_batches):
-            start_idx = batch_idx * batch_size
-            end_idx = min((batch_idx + 1) * batch_size, len(sentences))
-            batch_sentences = sentences[start_idx:end_idx]
-            inputs = classifier.tokenizer(
-                batch_sentences,
-                return_tensors="pt",
-                truncation=True,
-                padding=True,
-                max_length=max_length,
-            )
-            outputs = classifier.model(**inputs)
-            probs = torch.softmax(outputs.logits, dim=1)
-            for i, sent in enumerate(batch_sentences):
-                prob_related = probs[i][1].item()
-                pred = 1 if prob_related > threshold else 0
-                classifications.append(pred)
-                sentence_details.append({
-                    'sentence': sent[:100] + ('...' if len(sent) > 100 else ''),
-                    'probability_related': prob_related,
-                    'prediction': 'related' if pred == 1 else 'not related',
-                    'confidence': max(prob_related, 1 - prob_related)
-                })
-    num_related = sum(classifications)
-    num_not_related = len(classifications) - num_related
-    final_classification = "related" if num_related > 0 else "not related"
-    confidence_score = num_related / len(classifications) if classifications else 0
+        with open(pdf_path, 'rb') as file:
+            pdf_reader = PyPDF2.PdfReader(file)
+            text = ""
+            
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+            
+            return text
+            
+    except FileNotFoundError:
+        raise FileNotFoundError(f"PDF file not found: {pdf_path}")
+    except Exception as e:
+        raise Exception(f"Error extracting PDF: {e}")
+
+
+def classify_causality(
+    pdf_text: str,
+    model_path: str = './models/production_model_final',
+    threshold: float = 0.5,
+    max_length: int = 96,
+    verbose: bool = False
+) -> Dict:
+    """
+    Classify causality relationship in text
+    
+    Args:
+        pdf_text: Extracted text to classify
+        model_path: Path to trained model
+        threshold: Classification threshold (0-1)
+        max_length: Maximum sequence length
+        verbose: Print progress
+        
+    Returns:
+        Dictionary with classification results
+    """
+    
+    start_time = datetime.now()
+    
+    if verbose:
+        print(f"\nClassifying causality...")
+        print(f"Text length: {len(pdf_text)} characters")
+    
+    # Initialize classifier
+    classifier = CausalityClassifier(model_path, threshold)
+    
+    # Tokenize into sentences
+    sentences = sent_tokenize(pdf_text)
+    
+    if verbose:
+        print(f"Total sentences: {len(sentences)}")
+    
+    # Classify each sentence
+    related_count = 0
+    sentence_details = []
+    
+    for sent in sentences:
+        result = classifier.predict(sent, return_probs=True)
+        
+        if result['label'] == 1:
+            related_count += 1
+            sentence_details.append({
+                'sentence': sent[:100] + ('...' if len(sent) > 100 else ''),
+                'probability_related': result['probabilities']['related'],
+                'confidence': result['confidence']
+            })
+    
+    # Sort by probability
     sentence_details.sort(key=lambda x: x['probability_related'], reverse=True)
+    
+    # Final classification
+    final_classification = 'related' if related_count > 0 else 'not related'
+    confidence_score = related_count / len(sentences) if sentences else 0
+    
+    # Processing time
+    duration = (datetime.now() - start_time).total_seconds()
+    
     results = {
         'final_classification': final_classification,
         'confidence_score': confidence_score,
-        'related_sentences': num_related,
-        'not_related_sentences': num_not_related,
+        'related_sentences': related_count,
+        'not_related_sentences': len(sentences) - related_count,
         'total_sentences': len(sentences),
-        'top_related_sentences': sentence_details[:5],
-        'threshold_used': threshold
+        'top_related_sentences': sentence_details[:5],  # Top 5
+        'threshold_used': threshold,
+        'processing_time_seconds': duration,
+        'timestamp': datetime.now().isoformat()
     }
+    
+    if verbose:
+        print(f"\nResults:")
+        print(f"  Classification: {final_classification}")
+        print(f"  Confidence: {confidence_score:.2%}")
+        print(f"  Related sentences: {related_count}/{len(sentences)}")
+        print(f"  Processing time: {duration:.2f}s")
+    
     return results
 
-def process_pdf_file(pdf_path, threshold=0.5):
+
+def process_pdf_file(
+    pdf_path: str,
+    model_path: str = './models/production_model_final',
+    threshold: float = 0.5,
+    save_report: bool = False,
+    output_dir: str = './results'
+) -> Dict:
+    """
+    Complete pipeline: Extract PDF → Classify → Generate Report
+    
+    Args:
+        pdf_path: Path to PDF file
+        model_path: Path to trained model
+        threshold: Classification threshold
+        save_report: Save detailed report to file
+        output_dir: Directory to save reports
+        
+    Returns:
+        Classification results dictionary
+    """
+    
+    print(f"\nProcessing PDF: {pdf_path}")
+    
+    # Step 1: Extract text
     pdf_text = extract_text_from_pdf(pdf_path)
-    results = classify_causality(pdf_text, threshold=threshold)
-    results["pdf_file"] = Path(pdf_path).name
+    print(f"✓ Extracted {len(pdf_text)} characters")
+    
+    # Step 2: Classify causality
+    results = classify_causality(
+        pdf_text=pdf_text,
+        model_path=model_path,
+        threshold=threshold,
+        verbose=True
+    )
+    
+    # Step 3: Add PDF metadata
+    results['pdf_file'] = str(Path(pdf_path).name)
+    results['pdf_path'] = str(Path(pdf_path).absolute())
+    
+    # Step 4: Save report if requested
+    if save_report:
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        
+        report_filename = f"{Path(pdf_path).stem}_causality_report.json"
+        report_path = Path(output_dir) / report_filename
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+        
+        print(f"✓ Report saved: {report_path}")
+    
     return results
 
-def process_multiple_pdfs(pdf_paths, threshold=0.5):
+
+def process_multiple_pdfs(
+    pdf_paths: List[str],
+    model_path: str = './models/production_model_final',
+    threshold: float = 0.5,
+    save_reports: bool = False,
+    output_dir: str = './results'
+) -> List[Dict]:
+    """
+    Process multiple PDF files in batch
+    
+    Args:
+        pdf_paths: List of PDF file paths
+        model_path: Path to trained model
+        threshold: Classification threshold
+        save_reports: Save individual reports
+        output_dir: Directory to save reports
+        
+    Returns:
+        List of results for each PDF
+    """
+    
+    print(f"\n{'='*70}")
+    print(f"BATCH PDF PROCESSING")
+    print(f"{'='*70}")
+    print(f"Total PDFs: {len(pdf_paths)}")
+    print(f"Threshold: {threshold}")
+    print(f"{'='*70}\n")
+    
     all_results = []
-    for pdf_path in pdf_paths:
+    
+    for i, pdf_path in enumerate(pdf_paths, 1):
+        print(f"\n[{i}/{len(pdf_paths)}] Processing: {pdf_path}")
+        
         try:
-            res = process_pdf_file(pdf_path, threshold)
-            all_results.append(res)
+            results = process_pdf_file(
+                pdf_path=pdf_path,
+                model_path=model_path,
+                threshold=threshold,
+                save_report=save_reports,
+                output_dir=output_dir
+            )
+            all_results.append(results)
+            print(f"✓ Success: {results['final_classification']}")
+            
         except Exception as e:
-            all_results.append({"pdf_file": Path(pdf_path).name, "error": str(e), "final_classification": "error"})
+            print(f"✗ Error: {e}")
+            all_results.append({
+                'pdf_file': str(Path(pdf_path).name),
+                'pdf_path': str(pdf_path),
+                'error': str(e),
+                'final_classification': 'error'
+            })
+    
+    # Generate summary
+    successful = len([r for r in all_results if 'error' not in r])
+    related = len([r for r in all_results if r.get('final_classification') == 'related'])
+    not_related = len([r for r in all_results if r.get('final_classification') == 'not related'])
+    
+    print(f"\n{'='*70}")
+    print("BATCH PROCESSING SUMMARY")
+    print(f"{'='*70}")
+    print(f"Total PDFs: {len(pdf_paths)}")
+    print(f"Successful: {successful}")
+    print(f"Failed: {len(pdf_paths) - successful}")
+    print(f"Related: {related}")
+    print(f"Not Related: {not_related}")
+    print(f"{'='*70}\n")
+    
+    # Save batch summary
+    if save_reports:
+        summary_path = Path(output_dir) / 'batch_summary.json'
+        with open(summary_path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'total_pdfs': len(pdf_paths),
+                'successful': successful,
+                'failed': len(pdf_paths) - successful,
+                'related_count': related,
+                'not_related_count': not_related,
+                'timestamp': datetime.now().isoformat(),
+                'results': all_results
+            }, f, indent=2, ensure_ascii=False)
+        
+        print(f"✓ Batch summary saved: {summary_path}\n")
+    
     return all_results
->>>>>>> 36c6ab176326b22e0a5f7c4945bb1c9e4ddd69da
+
+
+# Example usage
+if __name__ == "__main__":
+    # Test the classifier
+    print("Testing Drug Causality Classifier...")
+    
+    classifier = CausalityClassifier()
+    
+    test_text = "Patient developed severe nausea after taking Drug X"
+    result = classifier.predict(test_text, return_probs=True)
+    
+    print(f"\nTest Text: {test_text}")
+    print(f"Classification: {result['prediction']}")
+    print(f"Confidence: {result['confidence']:.2%}")
+    print(f"Probabilities: {result['probabilities']}")
