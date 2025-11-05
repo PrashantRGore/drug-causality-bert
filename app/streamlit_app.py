@@ -2,46 +2,12 @@ import streamlit as st
 import tempfile
 import os
 import sys
+import pandas as pd
+import json
 from pathlib import Path
 import nltk
 
 nltk.download('punkt')
-
-@st.cache_resource
-def load_model():
-    """Load BioBERT model once and reuse across sessions"""
-    from transformers import AutoTokenizer, AutoModelForSequenceClassification
-    model_name = "your_model_path"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    return tokenizer, model
-
-# Use cached model
-tokenizer, model = load_model()
-
-@st.cache_data
-def load_drug_database():
-    """Load drug names and mappings once"""
-    import pandas as pd
-    df = pd.read_csv("data/drug_names.csv")
-    return df
-
-drug_data = load_drug_database()
-
-import boto3
-
-@st.cache_resource
-def load_model_from_s3():
-    """Download model from S3 on first load only"""
-    s3 = boto3.client('s3')
-    s3.download_file('your-bucket', 'models/pytorch_model.bin', '/tmp/model.bin')
-    # Load model from /tmp/model.bin
-    return model
-
-@st.cache_data(ttl=3600)  # Refresh every 3600 seconds (1 hour)
-def load_fresh_drug_database():
-    """Reload data hourly to get fresh updates"""
-    return pd.read_csv("data/drug_names.csv")
 
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -54,6 +20,16 @@ from src.inference import (
     process_pdf_file, 
     process_multiple_pdfs
 )
+
+# SINGLE load_model function with caching
+@st.cache_resource
+def load_model():
+    """Load CausalityClassifier model once and reuse across sessions"""
+    try:
+        return CausalityClassifier("models/production_model_final")
+    except Exception as e:
+        st.error(f"Failed to load model: {e}")
+        return None
 
 # App Configuration
 st.set_page_config(
@@ -68,14 +44,6 @@ st.title("💊 Drug Causality Classifier")
 st.caption("BioBERT Model | F1 Score: 97.59% | Sensitivity: 98.68% | Specificity: 96.50%")
 
 # Load model (cached)
-@st.cache_resource
-def load_model():
-    try:
-        return CausalityClassifier("models/production_model_final")
-    except Exception as e:
-        st.error(f"Failed to load model: {e}")
-        return None
-
 classifier = load_model()
 
 # Sidebar Configuration
@@ -229,7 +197,6 @@ with tab2:
                     # Download Button
                     st.subheader("💾 Download Report")
                     
-                    import json
                     report_json = json.dumps(results, indent=2)
                     
                     st.download_button(
@@ -324,7 +291,6 @@ with tab3:
                 # Download Batch Summary
                 st.subheader("💾 Download Batch Report")
                 
-                import json
                 batch_report = {
                     'summary': {
                         'total_files': total_files,
@@ -384,7 +350,3 @@ st.sidebar.markdown(
     "- Clinical report analysis\n"
     "- Regulatory compliance"
 )
-
-
-
-
