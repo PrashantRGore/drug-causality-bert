@@ -7,6 +7,28 @@ import nltk
 
 nltk.download('punkt')
 
+@st.cache_resource
+def load_model():
+    """Load BioBERT model once and reuse across sessions"""
+    from transformers import AutoTokenizer, AutoModelForSequenceClassification
+    model_name = "your_model_path"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    return tokenizer, model
+
+# Use cached model
+tokenizer, model = load_model()
+
+@st.cache_data
+def load_drug_database():
+    """Load drug names and mappings once"""
+    import pandas as pd
+    df = pd.read_csv("data/drug_names.csv")
+    return df
+
+drug_data = load_drug_database()
+
+
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -348,5 +370,6 @@ st.sidebar.markdown(
     "- Clinical report analysis\n"
     "- Regulatory compliance"
 )
+
 
 
