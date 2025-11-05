@@ -28,6 +28,20 @@ def load_drug_database():
 
 drug_data = load_drug_database()
 
+import boto3
+
+@st.cache_resource
+def load_model_from_s3():
+    """Download model from S3 on first load only"""
+    s3 = boto3.client('s3')
+    s3.download_file('your-bucket', 'models/pytorch_model.bin', '/tmp/model.bin')
+    # Load model from /tmp/model.bin
+    return model
+
+@st.cache_data(ttl=3600)  # Refresh every 3600 seconds (1 hour)
+def load_fresh_drug_database():
+    """Reload data hourly to get fresh updates"""
+    return pd.read_csv("data/drug_names.csv")
 
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -370,6 +384,7 @@ st.sidebar.markdown(
     "- Clinical report analysis\n"
     "- Regulatory compliance"
 )
+
 
 
 
