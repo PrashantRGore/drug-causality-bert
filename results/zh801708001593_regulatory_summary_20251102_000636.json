@@ -1,0 +1,25 @@
+{
+  "pdf_file": "zh801708001593.pdf",
+  "analysis_date": "2025-11-02T00:06:36.023998",
+  "total_sentences": 454,
+  "total_drugs": 3,
+  "total_events": 4,
+  "drugs_identified": [
+    "tanespimycin",
+    "boronic acid",
+    "Lipoic acid"
+  ],
+  "events_identified": [
+    "peripheral\nneuropathy",
+    "neurotoxicity",
+    "peripheral neuropathy",
+    "neuropathy"
+  ],
+  "drug_statistics": [],
+  "model_performance": {
+    "f1_score": 0.9759,
+    "accuracy": 0.9759,
+    "sensitivity": 0.9868,
+    "specificity": 0.965
+  }
+}

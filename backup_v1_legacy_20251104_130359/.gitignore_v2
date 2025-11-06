@@ -1,0 +1,80 @@
+# Drug Causality BERT v2.0 - Git Ignore File
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Data files (large)
+data/raw/*.pdf
+data/processed/
+
+# Results (generated reports)
+results/*.docx
+results/*.json
+results/*.txt
+
+# Models (large files - use Git LFS or download separately)
+models/production_model_final/model.safetensors
+models/production_model_final/pytorch_model.bin
+
+# Temporary files
+*.tmp
+*.temp
+~$*.docx
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Distribution
+*.whl

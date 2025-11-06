@@ -1,0 +1,12 @@
+DRUG CAUSALITY CLASSIFICATION REPORT
+================================================================================
+
+Generated: 2025-11-01 23:14:25
+
+Final Classification: NOT RELATED
+Confidence Score: 0.0000
+Related Sentences: 0 / 6
+Threshold Used: 0.5
+
+Top Related Sentences:
+--------------------------------------------------------------------------------

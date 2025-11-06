@@ -1,0 +1,488 @@
+{
+  "pdf_file": "zh801708001593.pdf",
+  "total_sentences": 454,
+  "related_sentences_count": 53,
+  "not_related_sentences_count": 401,
+  "confidence_score": 0.11674008810572688,
+  "final_classification": "related",
+  "all_related_sentences": [
+    {
+      "sentence_number": 229,
+      "sentence": "Bortez-\nomib-induced peripheral neurotoxicity: a neuro-physiological and pathological study in the rat.Exp Neurol.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999452829360962,
+      "probability_not_related": 5.4675030696671456e-05,
+      "probability_related": 0.9999452829360962
+    },
+    {
+      "sentence_number": 20,
+      "sentence": "5We herein review and discuss the pathogenesis,\nincidence, risk factors, diagnosis, characteristics, and managementof bortezomib-induced peripheral neuropathy (BIPN).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999301433563232,
+      "probability_not_related": 6.989056419115514e-05,
+      "probability_related": 0.9999301433563232
+    },
+    {
+      "sentence_number": 385,
+      "sentence": "Cavaletti G, Nobile-Orazio E. Bortezomib-\ninduced peripheral neurotoxicity: still far from apainless gain.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999288320541382,
+      "probability_not_related": 7.115783228073269e-05,
+      "probability_related": 0.9999288320541382
+    },
+    {
+      "sentence_number": 307,
+      "sentence": "A prospective study ofbortezomib-induced peripheral neuropathy.Neuro-Oncol.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999237060546875,
+      "probability_not_related": 7.62474664952606e-05,
+      "probability_related": 0.9999237060546875
+    },
+    {
+      "sentence_number": 220,
+      "sentence": "Use of immunoglobulin infusions in the man-agement of bortezomib-induced peripheral neu-\nropathy in multiple myeloma.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999186992645264,
+      "probability_not_related": 8.129738125717267e-05,
+      "probability_related": 0.9999186992645264
+    },
+    {
+      "sentence_number": 241,
+      "sentence": "Quantitative sensory ﬁndingsin patients with bortezomib-induced pain.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999161958694458,
+      "probability_not_related": 8.374489698326215e-05,
+      "probability_related": 0.9999161958694458
+    },
+    {
+      "sentence_number": 84,
+      "sentence": "22\nOne could suggest that treatment schedules consisting of\nthalidomide plus bortezomib would lead to increased incidence andseverity of neurotoxicity, because of the well-known neurotoxiceffect both drugs exert.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999141693115234,
+      "probability_not_related": 8.585553587181494e-05,
+      "probability_related": 0.9999141693115234
+    },
+    {
+      "sentence_number": 21,
+      "sentence": "We alsohighlight areas of future research to pursue.Search strategy and selection criteria\nReferences for this review were identiﬁed by searches of\nPubMed from 2000 until March 2008 with the terms “pro-teasome inhibitors,” “proteasome inhibitors and peripheral neuro-pathy,” “Velcade,” “bortezomib-induced neurotoxicity,” “bortezomib-induced peripheral neuropathy,” and “chemotherapy-inducedperipheral neuropathy.”\nPathogenesis of peripheral neuropathy\nCurrent knowledge of the mechanism underlying BIPN is verylimited.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999136924743652,
+      "probability_not_related": 8.627738134237006e-05,
+      "probability_related": 0.9999136924743652
+    },
+    {
+      "sentence_number": 1,
+      "sentence": "Review article\nBortezomib-induced peripheral neuropathy in multiple myeloma:\na comprehensive review of the literature\nAndreas A. Argyriou,1,2Gregoris Iconomou,2and Haralabos P. Kalofonos2\n1Department of Neurology, Saint Andrew’s General Hospital of Patras, Patras; and2Department of Medicine, Division of Oncology, University of Patras Medical\nSchool, Rion-Patras, Greece\nBortezomib has demonstrated signiﬁcant\nactivity in clinical trials, mainly againstrecurrent or newly diagnosed multiplemyeloma (MM).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9998689889907837,
+      "probability_not_related": 0.00013094510359223932,
+      "probability_related": 0.9998689889907837
+    },
+    {
+      "sentence_number": 390,
+      "sentence": "Features\nand risk factors of peripheral neuropathy duringtreatment of advanced multiple myeloma withbortezomib.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9998503923416138,
+      "probability_not_related": 0.0001495292381150648,
+      "probability_related": 0.9998503923416138
+    },
+    {
+      "sentence_number": 94,
+      "sentence": "38,39BORTEZOMIB-INDUCED PERIPHERAL NEUROPATHY 1595 BLOOD, 1 SEPTEMBER 2008 /H18528VOLUME 112, NUMBER 5Downloaded from http://ashpublications.org/blood/article-pdf/112/5/1593/1486876/zh801708001593.pdf by guest on 25 October 2025\nAccording to published data, the incidence of grade 3 or 4\nneurotoxicity was 14% for patients aged less than 75 years and25% in older patients, thereby supporting the view that elderlypatients may be more prone than younger patients to manifestingincreased incidence and severity of BIPN.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9998483657836914,
+      "probability_not_related": 0.00015160930342972279,
+      "probability_related": 0.9998483657836914
+    },
+    {
+      "sentence_number": 131,
+      "sentence": "severe distal and proximal weakness QST: Increased touch thresholds, increased slotted pegboard time, cold pain thresholds at\nVery rarely, autonomic failure abnormally warm levels and reduction in sharpness detection\nBIPN indicates bortezomib-induced peripheral neuropathy; NCS, nerve conduction study; a-SAPs, amplitude of sensory action potentials; CMAPs, co mpound muscle\naction potentials; EMG, electromyography; and QST, quantitative sensory testing.1596 ARGYRIOU et al BLOOD, 1 SEPTEMBER 2008 /H18528VOLUME 112, NUMBER 5Downloaded from http://ashpublications.org/blood/article-pdf/112/5/1593/1486876/zh801708001593.pdf by guest on 25 October 2025\n(31/256), representing 34% of patients (31/90) who developed\nnew or worsening neuropathy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9998078942298889,
+      "probability_not_related": 0.00019215860811527818,
+      "probability_related": 0.9998078942298889
+    },
+    {
+      "sentence_number": 36,
+      "sentence": "13\nFinally, results from a neurophysiologic study applying quanti-\ntative sensory testing in patients receiving bortezomib for treatmentof either MM or non-Hodgkin lymphoma demonstrated thatbortezomib-induced pain is associated with deﬁcits of all 3 majorﬁber types, ie, A /H9252,A/H9254, and C caliber primary afferent ﬁbers.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997978806495667,
+      "probability_not_related": 0.00020210302318446338,
+      "probability_related": 0.9997978806495667
+    },
+    {
+      "sentence_number": 454,
+      "sentence": "BORTEZOMIB-INDUCED PERIPHERAL NEUROPATHY 1599 BLOOD, 1 SEPTEMBER 2008 /H18528VOLUME 112, NUMBER 5Downloaded from http://ashpublications.org/blood/article-pdf/112/5/1593/1486876/zh801708001593.pdf by guest on 25 October 2025",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997958540916443,
+      "probability_not_related": 0.00020412450248841196,
+      "probability_related": 0.9997958540916443
+    },
+    {
+      "sentence_number": 296,
+      "sentence": "Peripheral neuropathy induced by administra-tion of cisplatin and paclitaxel-based chemo-therapy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997658133506775,
+      "probability_not_related": 0.00023418627097271383,
+      "probability_related": 0.9997658133506775
+    },
+    {
+      "sentence_number": 224,
+      "sentence": "Chaudhry V, Cornblath DR, Corse A, Freimer M,\nSimmons-O’Brien E, Vogelsang G. Thalidomide-induced neuropathy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997383952140808,
+      "probability_not_related": 0.00026165490271523595,
+      "probability_related": 0.9997383952140808
+    },
+    {
+      "sentence_number": 148,
+      "sentence": "53Table 3 outlines the pharmaceutical\ninterventions for the symptomatic treatment of bortezomib-inducedneuropathic pain.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997298121452332,
+      "probability_not_related": 0.000270230695605278,
+      "probability_related": 0.9997298121452332
+    },
+    {
+      "sentence_number": 144,
+      "sentence": "However, theevidence of clinical improvement is considerable, in contrast withother forms of neurotoxicity in MM patients, especially afterthalidomide treatment.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997218251228333,
+      "probability_not_related": 0.00027810197207145393,
+      "probability_related": 0.9997218251228333
+    },
+    {
+      "sentence_number": 408,
+      "sentence": "Development of neuropathy inpatients with myeloma treated with thalidomide:patterns of occurrence and the role of electro-physiologic monitoring.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9996851682662964,
+      "probability_not_related": 0.00031487326486967504,
+      "probability_related": 0.9996851682662964
+    },
+    {
+      "sentence_number": 139,
+      "sentence": "19,20,32However, there are reports in which the recovery\nfrom pain and other sensory neuropathic symptoms required up\nto 2 years after bortezomib discontinuation.35In a recently\npublished study, detailed clinical assessment and neurophysi-\nologic examination was performed in 35 patients with advancedMM experiencing grade 3 BIPN after completion of bortezomibtherapy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9996771812438965,
+      "probability_not_related": 0.00032278496655635536,
+      "probability_related": 0.9996771812438965
+    },
+    {
+      "sentence_number": 56,
+      "sentence": "Incidence, severity, and risk factors\nCurrent knowledge shows that peripheral nerve damage is oneof the most signiﬁcant nonhematologic toxicities of bortezomib,which often leads to dose modiﬁcation and impact on clinicalendpoints and quality of life (QOL) of patients.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9996439218521118,
+      "probability_not_related": 0.0003561202029231936,
+      "probability_related": 0.9996439218521118
+    },
+    {
+      "sentence_number": 111,
+      "sentence": "In a recent study, bortezomib-inducedpain was rated in the majority of patients as moderate to severe,according to V AS.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.999517560005188,
+      "probability_not_related": 0.000482461677165702,
+      "probability_related": 0.999517560005188
+    },
+    {
+      "sentence_number": 320,
+      "sentence": "Gupta S, Pagliuca A, Devereux S, Mufti GJ,\nSchey S. Life-threatening motor neurotoxicity inassociation with bortezomib.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9995112419128418,
+      "probability_not_related": 0.0004887027316726744,
+      "probability_related": 0.9995112419128418
+    },
+    {
+      "sentence_number": 165,
+      "sentence": "Conclusions and future research\nperspectives\nPeripheral neuropathy is a common and important nonhematologic,\ndose-limiting adverse effect of bortezomib-based chemotherapy,Table 3.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9994822144508362,
+      "probability_not_related": 0.0005178576102480292,
+      "probability_related": 0.9994822144508362
+    },
+    {
+      "sentence_number": 426,
+      "sentence": "Levine S, Saltzman A. Pyridoxine (vitamin B6)\nneurotoxicity: enhancement by protein-deﬁcientdiet.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9994698166847229,
+      "probability_not_related": 0.0005302588688209653,
+      "probability_related": 0.9994698166847229
+    },
+    {
+      "sentence_number": 19,
+      "sentence": "4\nPeripheral neuropathy (PN) is a signiﬁcant dose-limiting toxic-\nity of bortezomib that typically occurs within the ﬁrst courses ofbortezomib, reaches a plateau at cycle 5, and thereafter does notappear to increase.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9994356036186218,
+      "probability_not_related": 0.0005643496988341212,
+      "probability_related": 0.9994356036186218
+    },
+    {
+      "sentence_number": 37,
+      "sentence": "14In\nany case, both the pathogenesis of BIPN and the anatomical\nstructures that are primarily or secondarily affected by bortezomibare vaguely deﬁned, and further studies are warranted beforedeﬁnite conclusions can be drawn.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9993606209754944,
+      "probability_not_related": 0.0006393641233444214,
+      "probability_related": 0.9993606209754944
+    },
+    {
+      "sentence_number": 77,
+      "sentence": "In the study by Richardson et al,\n19treatment-emergent peripheral\nneuropathy was reported in 21% of patients receiving bortezomib at a\nsingle dose of 1.0 mg/m2and 37% in patients receiving bortezomib at\n1.3 mg/m2.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9993170499801636,
+      "probability_not_related": 0.0006829345948062837,
+      "probability_related": 0.9993170499801636
+    },
+    {
+      "sentence_number": 80,
+      "sentence": "From\na clinical point of view it should be emphasized that BIPN typicallyoccurs within the ﬁrst 5 cycles of bortezomib administration and is rarethereafter, suggesting a dose threshold rather than a classic cumulativedose effect of bortezomib.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9991944432258606,
+      "probability_not_related": 0.0008055157959461212,
+      "probability_related": 0.9991944432258606
+    },
+    {
+      "sentence_number": 57,
+      "sentence": "Grades 1 and 2BIPN can occur in up to 75% and 33% of patients with recurrentor newly diagnosed disease under bortezomib therapy, respec-tively, whereas grades 3 and 4 neurotoxicity may affect up to30% of patients with recurrent disease and up to 18% of patientswith newly diagnosed disease.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9991503953933716,
+      "probability_not_related": 0.0008496009395457804,
+      "probability_related": 0.9991503953933716
+    },
+    {
+      "sentence_number": 262,
+      "sentence": "Frequency, characteristics, and reversibility ofperipheral neuropathy during treatment of ad-vanced multiple myeloma with bortezomib.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.999085545539856,
+      "probability_not_related": 0.0009145087678916752,
+      "probability_related": 0.999085545539856
+    },
+    {
+      "sentence_number": 30,
+      "sentence": "Bortezomib-induced changes were also observed in dorsal root ganglia (DRG)neurons, being represented by satellite cell intracytoplasmaticvacuolization due to mitochondrial and endoplasmic reticulumdamage.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9989787340164185,
+      "probability_not_related": 0.0010213041678071022,
+      "probability_related": 0.9989787340164185
+    },
+    {
+      "sentence_number": 9,
+      "sentence": "Analgesics, tricyclic antidepres-sants, anticonvulsants, and vitaminsupplements have been used as symp-tomatic treatment against bortezomib-associated neuropathic pain with somesuccess.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9988886713981628,
+      "probability_not_related": 0.0011113404761999846,
+      "probability_related": 0.9988886713981628
+    },
+    {
+      "sentence_number": 103,
+      "sentence": "Peripheral neuropathy at baseline was seen inmore than 20% of patients with newly diagnosed MM scheduled tobe treated with single-agent bortezomib therapy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9984709620475769,
+      "probability_not_related": 0.0015289626317098737,
+      "probability_related": 0.9984709620475769
+    },
+    {
+      "sentence_number": 2,
+      "sentence": "Peripheral neuropathy isa signiﬁcant toxicity of bortezomib, requir-ing dose modiﬁcation and potentialchanges in the treatment plan when itoccurs.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9978233575820923,
+      "probability_not_related": 0.0021766547579318285,
+      "probability_related": 0.9978233575820923
+    },
+    {
+      "sentence_number": 311,
+      "sentence": "Neu-\nropathy in multiple myeloma patients treated withbortezomib: a multicenter experience.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.997761607170105,
+      "probability_not_related": 0.0022383907344192266,
+      "probability_related": 0.997761607170105
+    },
+    {
+      "sentence_number": 71,
+      "sentence": "In another interesting report, Badros et al\n20retrospectively\nreviewed the incidence, severity, and risk factors of BIPN in\n78 patients with recurrent and/or refractory MM who were treatedwith bortezomib alone or in combination with thalidomide and/orchemotherapy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9976849555969238,
+      "probability_not_related": 0.0023150425404310226,
+      "probability_related": 0.9976849555969238
+    },
+    {
+      "sentence_number": 90,
+      "sentence": "In contrast, the use of bortezomib and lenalidomide, an analog\nof thalidomide, has been associated with lower accumulated ratesof BIPN.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.997454822063446,
+      "probability_not_related": 0.0025452272966504097,
+      "probability_related": 0.997454822063446
+    },
+    {
+      "sentence_number": 176,
+      "sentence": "Compared with other neurotoxic drugs in oncology (ie, taxanes,platinums, and thalidomide), work with BIPN has in fact beenintensive, for which some credit to both the investigators and themanufacturer (Millennium Pharmaceuticals, Cambridge, MA), asbortezomib toxicity has been taken very seriously from the earliestphases of bortezomib development.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9973898530006409,
+      "probability_not_related": 0.0026101612020283937,
+      "probability_related": 0.9973898530006409
+    },
+    {
+      "sentence_number": 51,
+      "sentence": "To our knowledge, TNS score has been used in a single study\nthat assessed BIPN in 27 patients treated with bortezomib andthalidomide for newly diagnosed MM.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9973581433296204,
+      "probability_not_related": 0.0026417807675898075,
+      "probability_related": 0.9973581433296204
+    },
+    {
+      "sentence_number": 267,
+      "sentence": "Neuro-\ntoxicity of bortezomib therapy in multiple my-eloma: a single-center experience and review ofthe literature.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9970843195915222,
+      "probability_not_related": 0.002915694611147046,
+      "probability_related": 0.9970843195915222
+    },
+    {
+      "sentence_number": 100,
+      "sentence": "4Current\nknowledge, shows that the use of bortezomib in solid malignan-\ncies is associated with lower rates of BIPN as opposed whenadministered for MM.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9968510270118713,
+      "probability_not_related": 0.003148986492305994,
+      "probability_related": 0.9968510270118713
+    },
+    {
+      "sentence_number": 167,
+      "sentence": "However, despite the increasing number ofpatients exposed to bortezomib therapy, there is a relative paucityof data concerning BIPN.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9963894486427307,
+      "probability_not_related": 0.00361053878441453,
+      "probability_related": 0.9963894486427307
+    },
+    {
+      "sentence_number": 24,
+      "sentence": "This fact supports the view that mitochondrial-mediateddisregulation of Ca\n/H11001/H11001homeostasis is a critical regulator of\nbortezomib cytotoxicity.7\nDisregulation of neurotrophins has also been proposed as\nanother important mechanism of BIPN genesis, since the mainaction of bortezomib is the inhibition of NF- /H9260B activation, thereby\nblocking the transcription of nerve growth factor-mediated neuronsurvival.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.995964765548706,
+      "probability_not_related": 0.004035176709294319,
+      "probability_related": 0.995964765548706
+    },
+    {
+      "sentence_number": 3,
+      "sentence": "The mechanism underlyingbortezomib-induced peripheral neuropa-thy (BIPN) is unknown.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9954232573509216,
+      "probability_not_related": 0.0045767310075461864,
+      "probability_related": 0.9954232573509216
+    },
+    {
+      "sentence_number": 120,
+      "sentence": "5\nFinally, the neurophysiologic approach with quantitative sen-\nsory testing in patients receiving bortezomib reveals increasedtouch thresholds, increased slotted pegboard time, abnormal coldpain thresholds, and reduction in sharpness detection, implying thatBIPN is associated with dysfunction in all 3 major ﬁber types (A /H9252,\nA/H9254, and C) in sensory nerves.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9934531450271606,
+      "probability_not_related": 0.006546908989548683,
+      "probability_related": 0.9934531450271606
+    },
+    {
+      "sentence_number": 82,
+      "sentence": "19,20In addition, a\npreliminary report of bortezomib safety in patients with relapsed/\nrefractory MM indicated that less heavily pretreated patients in anearlier stage of disease manifest milder BIPN.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9931759238243103,
+      "probability_not_related": 0.006824074313044548,
+      "probability_related": 0.9931759238243103
+    },
+    {
+      "sentence_number": 83,
+      "sentence": "37Prolonged admin -\nistration of bortezomib is not signiﬁcantly associated with in-creased incidence and severity of BIPN.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9927559494972229,
+      "probability_not_related": 0.007244016043841839,
+      "probability_related": 0.9927559494972229
+    },
+    {
+      "sentence_number": 132,
+      "sentence": "In 7% of patients (19/256), atleast one course of bortezomib was withheld because ofperipheral neuropathy, representing 21% of patients (19/90)with new or worsening neuropathy.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9925357103347778,
+      "probability_not_related": 0.007464256137609482,
+      "probability_related": 0.9925357103347778
+    },
+    {
+      "sentence_number": 422,
+      "sentence": "Levine S, Saltzman A. Pyridoxine (vitamin B6)\ntoxicity: enhancement by uremia in rats.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9923269152641296,
+      "probability_not_related": 0.007673001382499933,
+      "probability_related": 0.9923269152641296
+    },
+    {
+      "sentence_number": 97,
+      "sentence": "It has been also reported that BIPN may be associated with\nimpaired renal function and worst creatinine clearance in patientswith MM.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9897451996803284,
+      "probability_not_related": 0.010254878550767899,
+      "probability_related": 0.9897451996803284
+    },
+    {
+      "sentence_number": 153,
+      "sentence": "Vitamin B6 can cause additionalsensory neuropathy in patients with impaired renal function and inassociation with a protein-deﬁcient diet.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9891464710235596,
+      "probability_not_related": 0.010853474028408527,
+      "probability_related": 0.9891464710235596
+    },
+    {
+      "sentence_number": 232,
+      "sentence": "Corsetti G, Rodella L, Rezzani R, Stacchiotti A,\nBianchi R. Cytoplasmic changes in satellite cellsof spinal ganglia induced by cisplatin treatment inrats.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9885373115539551,
+      "probability_not_related": 0.011462744325399399,
+      "probability_related": 0.9885373115539551
+    }
+  ],
+  "threshold_used": 0.5
+}

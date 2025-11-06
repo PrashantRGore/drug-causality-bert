@@ -1,0 +1,504 @@
+====================================================================================================
+DRUG CAUSALITY VERIFICATION REPORT
+====================================================================================================
+Generated: 2025-11-01 23:59:30
+Model: ./models/production_model_final
+Threshold: 0.5
+
+====================================================================================================
+PDF: fphar-16-1498191.pdf
+====================================================================================================
+Total Sentences: 415
+Related Sentences: 19
+Confidence Score: 0.0458
+Classification: RELATED
+
+ALL DRUG-EVENT CAUSALITY RELATED SENTENCES:
+----------------------------------------------------------------------------------------------------
+
+1. [Sentence #132]
+   Adalimumab, commonly used for th e treatment of severe uveitis
+associated with juvenile idiopath ic arthritis, has been reported to
+contribute to cataracts and glaucoma, leading to signi ﬁcant visual
+impairment ( Lu et al., 2021 ;Fleischmann et al., 2022 ).
+   Probability: 0.999926
+   Confidence: 0.999926
+
+2. [Sentence #130]
+   Interferon Beta-1A, indicated for multiple sclerosis, was also
+identi ﬁed as potentially associated with drug-induced cataracts.
+   Probability: 0.999917
+   Confidence: 0.999917
+
+3. [Sentence #118]
+   Further research is warranted to elucidate the underlyingmechanisms and explore the epidemiology of bisphosphonate-related cataracts.
+   Probability: 0.999901
+   Confidence: 0.999901
+
+4. [Sentence #152]
+   In the RESONATE phase III
+multicenter trial, among approximately 400 patients withrelapsed or refractory chronic lymphocytic leukemia (CLL) or
+small lymphocytic lymphoma (SLL) receiving Ibrutinib, 10%
+reported blurred vision, and 3% developed cataracts.
+   Probability: 0.999878
+   Confidence: 0.999878
+
+5. [Sentence #121]
+   Our analysis suggests thatesomeprazole may be an independent risk factor for cataracts.However, given the limited current evidence, further large-scaleRCTs are warranted to elucidate this potential risk and assess itsclinical implications comprehensively.
+   Probability: 0.999822
+   Confidence: 0.999822
+
+6. [Sentence #105]
+   Consistent with these ﬁndings, our
+multivariate logistic regression anal ysis indicated that atorvastatin may
+be an independent risk factor for dr ug-induced cataracts (Odds Ratio
+(OR) [95% CI]: 12 [7.6 –18]).
+   Probability: 0.999776
+   Confidence: 0.999776
+
+7. [Sentence #129]
+   Consistently,
+our multivariate logistic regression analysis suggested thatRisankizumab may be an independent risk factor for cataracts.However, the precise pathogenic mechanisms remain unclear and
+warrant further investigation.
+   Probability: 0.999759
+   Confidence: 0.999759
+
+8. [Sentence #93]
+   Bimatoprost, a prostaglandin analog commonly
+prescribed for ocular conditions, may induce cataracts by increasing
+melanocyte activity in iris me lanocytes, leading to iris
+hyperpigmentation (reported in approximately 7% –16% of patients).
+   Probability: 0.999605
+   Confidence: 0.999605
+
+9. [Sentence #116]
+   The proposed mechanisms suggest that
+zoledronic acid may impair eye lens epithelial cell function by inducing
+local in ﬂammation and protein denaturati on, ultimately contributing to
+cataract formation ( Lee et al., 2020 ).
+   Probability: 0.999471
+   Confidence: 0.999471
+
+10. [Sentence #78]
+   The results identi ﬁed 15 drugs (Bimatoprost, Atorvastatin,
+Zoledronic Acid, Esomeprazol e, Risankizumab, Interferon β-1,
+Adalimumab, Prednisone, Ibrutini b, Upadacitinib, Tofacitinib,
+Sodium Oxybate, Tiotropium, Pomalidomide, and Lenalidomide) as
+independent risk factors for dru g-induced cataracts.
+   Probability: 0.999273
+   Confidence: 0.999273
+
+11. [Sentence #154]
+   Additionally, a case report
+suggested that Ibrutinib may penetrate the blood-aqueous barrier,altering the ocular microenvironment and causing plateletdysfunction and impaired ﬁbrinolysis, potentially leading to
+anterior chamber ﬁbrinoid syndrome following cataract surgery
+(Wang et al., 2025 ).
+   Probability: 0.999124
+   Confidence: 0.999124
+
+12. [Sentence #163]
+   Although no direct association between Pomalidomide
+and cataracts has been reported, a prospective study involving
+vitreoretinal lymphoma patients receiving intravitreal
+methotrexate (MTX), Rituximab, and Lenalidomide ( R2regimen)
+as maintenance therapy identi ﬁed notable ocular toxicities,
+including cataracts, suggesting a potential increase in oculartoxicity risk ( Zhang et al., 2021 ).
+   Probability: 0.998523
+   Confidence: 0.998523
+
+13. [Sentence #115]
+   A study based
+on Optum and MarketScan databases reported a potential associationbetween zoledronic acid treatment and an increased risk of cataracts(ROR [95% CI]: 12 [7.6 –18]).
+   Probability: 0.998040
+   Confidence: 0.998040
+
+14. [Sentence #133]
+   However, in
+our study, the cataract signal associ ated with Adalimumab may represent
+a false positive, potentially in ﬂuenced by underlying diseases or inadequate
+treatment responses.
+   Probability: 0.997400
+   Confidence: 0.997400
+
+15. [Sentence #124]
+   Consistently, our multivariate
+logistic regression analysis identi ﬁed atorvastatin as an independentrisk factor for drug-induced cataracts (OR [95% CI]: 12 [7.6 –18]).
+   Probability: 0.993490
+   Confidence: 0.993490
+
+16. [Sentence #134]
+   Therefore, further research is necessary to establish adeﬁnitive causal relationship between Adalimumab and cataracts.
+   Probability: 0.993086
+   Confidence: 0.993086
+
+17. [Sentence #285]
+   Risk of
+cataract surgery and age-related macular degeneration after initiation of denosumab vs
+zoledronic acid for osteoporosis: a multi-database cohort study.
+   Probability: 0.991020
+   Confidence: 0.991020
+
+18. [Sentence #74]
+   According to the analysis, the top ﬁve medications associated
+with an increased risk of cataracts were Alendronic Acid (ROR =13.92, 95% CI: 12.51 –15.48, P <0.01), Ibrutinib (ROR = 5.26, 95%
+CI: 4.85 –5.70, P <0.01), Upadacitinib (ROR = 4.99, 95% CI:
+4.52–5.51, P <0.01), Tiotropium (ROR = 4.36, 95% CI:3.97–4.97, P <0.01), and Adalimumab (ROR = 2.79, 95% CI:
+2.65–2.94, P <0.01).
+   Probability: 0.977487
+   Confidence: 0.977487
+
+19. [Sentence #289]
+   Ibrutinib alleviates
+LPS-induced neuroin ﬂammation and synaptic defects in a mouse model of depression.
+   Probability: 0.972853
+   Confidence: 0.972853
+
+
+====================================================================================================
+PDF: zh801708001593.pdf
+====================================================================================================
+Total Sentences: 454
+Related Sentences: 53
+Confidence Score: 0.1167
+Classification: RELATED
+
+ALL DRUG-EVENT CAUSALITY RELATED SENTENCES:
+----------------------------------------------------------------------------------------------------
+
+1. [Sentence #229]
+   Bortez-
+omib-induced peripheral neurotoxicity: a neuro-physiological and pathological study in the rat.Exp Neurol.
+   Probability: 0.999945
+   Confidence: 0.999945
+
+2. [Sentence #20]
+   5We herein review and discuss the pathogenesis,
+incidence, risk factors, diagnosis, characteristics, and managementof bortezomib-induced peripheral neuropathy (BIPN).
+   Probability: 0.999930
+   Confidence: 0.999930
+
+3. [Sentence #385]
+   Cavaletti G, Nobile-Orazio E. Bortezomib-
+induced peripheral neurotoxicity: still far from apainless gain.
+   Probability: 0.999929
+   Confidence: 0.999929
+
+4. [Sentence #307]
+   A prospective study ofbortezomib-induced peripheral neuropathy.Neuro-Oncol.
+   Probability: 0.999924
+   Confidence: 0.999924
+
+5. [Sentence #220]
+   Use of immunoglobulin infusions in the man-agement of bortezomib-induced peripheral neu-
+ropathy in multiple myeloma.
+   Probability: 0.999919
+   Confidence: 0.999919
+
+6. [Sentence #241]
+   Quantitative sensory ﬁndingsin patients with bortezomib-induced pain.
+   Probability: 0.999916
+   Confidence: 0.999916
+
+7. [Sentence #84]
+   22
+One could suggest that treatment schedules consisting of
+thalidomide plus bortezomib would lead to increased incidence andseverity of neurotoxicity, because of the well-known neurotoxiceffect both drugs exert.
+   Probability: 0.999914
+   Confidence: 0.999914
+
+8. [Sentence #21]
+   We alsohighlight areas of future research to pursue.Search strategy and selection criteria
+References for this review were identiﬁed by searches of
+PubMed from 2000 until March 2008 with the terms “pro-teasome inhibitors,” “proteasome inhibitors and peripheral neuro-pathy,” “Velcade,” “bortezomib-induced neurotoxicity,” “bortezomib-induced peripheral neuropathy,” and “chemotherapy-inducedperipheral neuropathy.”
+Pathogenesis of peripheral neuropathy
+Current knowledge of the mechanism underlying BIPN is verylimited.
+   Probability: 0.999914
+   Confidence: 0.999914
+
+9. [Sentence #1]
+   Review article
+Bortezomib-induced peripheral neuropathy in multiple myeloma:
+a comprehensive review of the literature
+Andreas A. Argyriou,1,2Gregoris Iconomou,2and Haralabos P. Kalofonos2
+1Department of Neurology, Saint Andrew’s General Hospital of Patras, Patras; and2Department of Medicine, Division of Oncology, University of Patras Medical
+School, Rion-Patras, Greece
+Bortezomib has demonstrated signiﬁcant
+activity in clinical trials, mainly againstrecurrent or newly diagnosed multiplemyeloma (MM).
+   Probability: 0.999869
+   Confidence: 0.999869
+
+10. [Sentence #390]
+   Features
+and risk factors of peripheral neuropathy duringtreatment of advanced multiple myeloma withbortezomib.
+   Probability: 0.999850
+   Confidence: 0.999850
+
+11. [Sentence #94]
+   38,39BORTEZOMIB-INDUCED PERIPHERAL NEUROPATHY 1595 BLOOD, 1 SEPTEMBER 2008 /H18528VOLUME 112, NUMBER 5Downloaded from http://ashpublications.org/blood/article-pdf/112/5/1593/1486876/zh801708001593.pdf by guest on 25 October 2025
+According to published data, the incidence of grade 3 or 4
+neurotoxicity was 14% for patients aged less than 75 years and25% in older patients, thereby supporting the view that elderlypatients may be more prone than younger patients to manifestingincreased incidence and severity of BIPN.
+   Probability: 0.999848
+   Confidence: 0.999848
+
+12. [Sentence #131]
+   severe distal and proximal weakness QST: Increased touch thresholds, increased slotted pegboard time, cold pain thresholds at
+Very rarely, autonomic failure abnormally warm levels and reduction in sharpness detection
+BIPN indicates bortezomib-induced peripheral neuropathy; NCS, nerve conduction study; a-SAPs, amplitude of sensory action potentials; CMAPs, co mpound muscle
+action potentials; EMG, electromyography; and QST, quantitative sensory testing.1596 ARGYRIOU et al BLOOD, 1 SEPTEMBER 2008 /H18528VOLUME 112, NUMBER 5Downloaded from http://ashpublications.org/blood/article-pdf/112/5/1593/1486876/zh801708001593.pdf by guest on 25 October 2025
+(31/256), representing 34% of patients (31/90) who developed
+new or worsening neuropathy.
+   Probability: 0.999808
+   Confidence: 0.999808
+
+13. [Sentence #36]
+   13
+Finally, results from a neurophysiologic study applying quanti-
+tative sensory testing in patients receiving bortezomib for treatmentof either MM or non-Hodgkin lymphoma demonstrated thatbortezomib-induced pain is associated with deﬁcits of all 3 majorﬁber types, ie, A /H9252,A/H9254, and C caliber primary afferent ﬁbers.
+   Probability: 0.999798
+   Confidence: 0.999798
+
+14. [Sentence #454]
+   BORTEZOMIB-INDUCED PERIPHERAL NEUROPATHY 1599 BLOOD, 1 SEPTEMBER 2008 /H18528VOLUME 112, NUMBER 5Downloaded from http://ashpublications.org/blood/article-pdf/112/5/1593/1486876/zh801708001593.pdf by guest on 25 October 2025
+   Probability: 0.999796
+   Confidence: 0.999796
+
+15. [Sentence #296]
+   Peripheral neuropathy induced by administra-tion of cisplatin and paclitaxel-based chemo-therapy.
+   Probability: 0.999766
+   Confidence: 0.999766
+
+16. [Sentence #224]
+   Chaudhry V, Cornblath DR, Corse A, Freimer M,
+Simmons-O’Brien E, Vogelsang G. Thalidomide-induced neuropathy.
+   Probability: 0.999738
+   Confidence: 0.999738
+
+17. [Sentence #148]
+   53Table 3 outlines the pharmaceutical
+interventions for the symptomatic treatment of bortezomib-inducedneuropathic pain.
+   Probability: 0.999730
+   Confidence: 0.999730
+
+18. [Sentence #144]
+   However, theevidence of clinical improvement is considerable, in contrast withother forms of neurotoxicity in MM patients, especially afterthalidomide treatment.
+   Probability: 0.999722
+   Confidence: 0.999722
+
+19. [Sentence #408]
+   Development of neuropathy inpatients with myeloma treated with thalidomide:patterns of occurrence and the role of electro-physiologic monitoring.
+   Probability: 0.999685
+   Confidence: 0.999685
+
+20. [Sentence #139]
+   19,20,32However, there are reports in which the recovery
+from pain and other sensory neuropathic symptoms required up
+to 2 years after bortezomib discontinuation.35In a recently
+published study, detailed clinical assessment and neurophysi-
+ologic examination was performed in 35 patients with advancedMM experiencing grade 3 BIPN after completion of bortezomibtherapy.
+   Probability: 0.999677
+   Confidence: 0.999677
+
+21. [Sentence #56]
+   Incidence, severity, and risk factors
+Current knowledge shows that peripheral nerve damage is oneof the most signiﬁcant nonhematologic toxicities of bortezomib,which often leads to dose modiﬁcation and impact on clinicalendpoints and quality of life (QOL) of patients.
+   Probability: 0.999644
+   Confidence: 0.999644
+
+22. [Sentence #111]
+   In a recent study, bortezomib-inducedpain was rated in the majority of patients as moderate to severe,according to V AS.
+   Probability: 0.999518
+   Confidence: 0.999518
+
+23. [Sentence #320]
+   Gupta S, Pagliuca A, Devereux S, Mufti GJ,
+Schey S. Life-threatening motor neurotoxicity inassociation with bortezomib.
+   Probability: 0.999511
+   Confidence: 0.999511
+
+24. [Sentence #165]
+   Conclusions and future research
+perspectives
+Peripheral neuropathy is a common and important nonhematologic,
+dose-limiting adverse effect of bortezomib-based chemotherapy,Table 3.
+   Probability: 0.999482
+   Confidence: 0.999482
+
+25. [Sentence #426]
+   Levine S, Saltzman A. Pyridoxine (vitamin B6)
+neurotoxicity: enhancement by protein-deﬁcientdiet.
+   Probability: 0.999470
+   Confidence: 0.999470
+
+26. [Sentence #19]
+   4
+Peripheral neuropathy (PN) is a signiﬁcant dose-limiting toxic-
+ity of bortezomib that typically occurs within the ﬁrst courses ofbortezomib, reaches a plateau at cycle 5, and thereafter does notappear to increase.
+   Probability: 0.999436
+   Confidence: 0.999436
+
+27. [Sentence #37]
+   14In
+any case, both the pathogenesis of BIPN and the anatomical
+structures that are primarily or secondarily affected by bortezomibare vaguely deﬁned, and further studies are warranted beforedeﬁnite conclusions can be drawn.
+   Probability: 0.999361
+   Confidence: 0.999361
+
+28. [Sentence #77]
+   In the study by Richardson et al,
+19treatment-emergent peripheral
+neuropathy was reported in 21% of patients receiving bortezomib at a
+single dose of 1.0 mg/m2and 37% in patients receiving bortezomib at
+1.3 mg/m2.
+   Probability: 0.999317
+   Confidence: 0.999317
+
+29. [Sentence #80]
+   From
+a clinical point of view it should be emphasized that BIPN typicallyoccurs within the ﬁrst 5 cycles of bortezomib administration and is rarethereafter, suggesting a dose threshold rather than a classic cumulativedose effect of bortezomib.
+   Probability: 0.999194
+   Confidence: 0.999194
+
+30. [Sentence #57]
+   Grades 1 and 2BIPN can occur in up to 75% and 33% of patients with recurrentor newly diagnosed disease under bortezomib therapy, respec-tively, whereas grades 3 and 4 neurotoxicity may affect up to30% of patients with recurrent disease and up to 18% of patientswith newly diagnosed disease.
+   Probability: 0.999150
+   Confidence: 0.999150
+
+31. [Sentence #262]
+   Frequency, characteristics, and reversibility ofperipheral neuropathy during treatment of ad-vanced multiple myeloma with bortezomib.
+   Probability: 0.999086
+   Confidence: 0.999086
+
+32. [Sentence #30]
+   Bortezomib-induced changes were also observed in dorsal root ganglia (DRG)neurons, being represented by satellite cell intracytoplasmaticvacuolization due to mitochondrial and endoplasmic reticulumdamage.
+   Probability: 0.998979
+   Confidence: 0.998979
+
+33. [Sentence #9]
+   Analgesics, tricyclic antidepres-sants, anticonvulsants, and vitaminsupplements have been used as symp-tomatic treatment against bortezomib-associated neuropathic pain with somesuccess.
+   Probability: 0.998889
+   Confidence: 0.998889
+
+34. [Sentence #103]
+   Peripheral neuropathy at baseline was seen inmore than 20% of patients with newly diagnosed MM scheduled tobe treated with single-agent bortezomib therapy.
+   Probability: 0.998471
+   Confidence: 0.998471
+
+35. [Sentence #2]
+   Peripheral neuropathy isa signiﬁcant toxicity of bortezomib, requir-ing dose modiﬁcation and potentialchanges in the treatment plan when itoccurs.
+   Probability: 0.997823
+   Confidence: 0.997823
+
+36. [Sentence #311]
+   Neu-
+ropathy in multiple myeloma patients treated withbortezomib: a multicenter experience.
+   Probability: 0.997762
+   Confidence: 0.997762
+
+37. [Sentence #71]
+   In another interesting report, Badros et al
+20retrospectively
+reviewed the incidence, severity, and risk factors of BIPN in
+78 patients with recurrent and/or refractory MM who were treatedwith bortezomib alone or in combination with thalidomide and/orchemotherapy.
+   Probability: 0.997685
+   Confidence: 0.997685
+
+38. [Sentence #90]
+   In contrast, the use of bortezomib and lenalidomide, an analog
+of thalidomide, has been associated with lower accumulated ratesof BIPN.
+   Probability: 0.997455
+   Confidence: 0.997455
+
+39. [Sentence #176]
+   Compared with other neurotoxic drugs in oncology (ie, taxanes,platinums, and thalidomide), work with BIPN has in fact beenintensive, for which some credit to both the investigators and themanufacturer (Millennium Pharmaceuticals, Cambridge, MA), asbortezomib toxicity has been taken very seriously from the earliestphases of bortezomib development.
+   Probability: 0.997390
+   Confidence: 0.997390
+
+40. [Sentence #51]
+   To our knowledge, TNS score has been used in a single study
+that assessed BIPN in 27 patients treated with bortezomib andthalidomide for newly diagnosed MM.
+   Probability: 0.997358
+   Confidence: 0.997358
+
+41. [Sentence #267]
+   Neuro-
+toxicity of bortezomib therapy in multiple my-eloma: a single-center experience and review ofthe literature.
+   Probability: 0.997084
+   Confidence: 0.997084
+
+42. [Sentence #100]
+   4Current
+knowledge, shows that the use of bortezomib in solid malignan-
+cies is associated with lower rates of BIPN as opposed whenadministered for MM.
+   Probability: 0.996851
+   Confidence: 0.996851
+
+43. [Sentence #167]
+   However, despite the increasing number ofpatients exposed to bortezomib therapy, there is a relative paucityof data concerning BIPN.
+   Probability: 0.996389
+   Confidence: 0.996389
+
+44. [Sentence #24]
+   This fact supports the view that mitochondrial-mediateddisregulation of Ca
+/H11001/H11001homeostasis is a critical regulator of
+bortezomib cytotoxicity.7
+Disregulation of neurotrophins has also been proposed as
+another important mechanism of BIPN genesis, since the mainaction of bortezomib is the inhibition of NF- /H9260B activation, thereby
+blocking the transcription of nerve growth factor-mediated neuronsurvival.
+   Probability: 0.995965
+   Confidence: 0.995965
+
+45. [Sentence #3]
+   The mechanism underlyingbortezomib-induced peripheral neuropa-thy (BIPN) is unknown.
+   Probability: 0.995423
+   Confidence: 0.995423
+
+46. [Sentence #120]
+   5
+Finally, the neurophysiologic approach with quantitative sen-
+sory testing in patients receiving bortezomib reveals increasedtouch thresholds, increased slotted pegboard time, abnormal coldpain thresholds, and reduction in sharpness detection, implying thatBIPN is associated with dysfunction in all 3 major ﬁber types (A /H9252,
+A/H9254, and C) in sensory nerves.
+   Probability: 0.993453
+   Confidence: 0.993453
+
+47. [Sentence #82]
+   19,20In addition, a
+preliminary report of bortezomib safety in patients with relapsed/
+refractory MM indicated that less heavily pretreated patients in anearlier stage of disease manifest milder BIPN.
+   Probability: 0.993176
+   Confidence: 0.993176
+
+48. [Sentence #83]
+   37Prolonged admin -
+istration of bortezomib is not signiﬁcantly associated with in-creased incidence and severity of BIPN.
+   Probability: 0.992756
+   Confidence: 0.992756
+
+49. [Sentence #132]
+   In 7% of patients (19/256), atleast one course of bortezomib was withheld because ofperipheral neuropathy, representing 21% of patients (19/90)with new or worsening neuropathy.
+   Probability: 0.992536
+   Confidence: 0.992536
+
+50. [Sentence #422]
+   Levine S, Saltzman A. Pyridoxine (vitamin B6)
+toxicity: enhancement by uremia in rats.
+   Probability: 0.992327
+   Confidence: 0.992327
+
+51. [Sentence #97]
+   It has been also reported that BIPN may be associated with
+impaired renal function and worst creatinine clearance in patientswith MM.
+   Probability: 0.989745
+   Confidence: 0.989745
+
+52. [Sentence #153]
+   Vitamin B6 can cause additionalsensory neuropathy in patients with impaired renal function and inassociation with a protein-deﬁcient diet.
+   Probability: 0.989146
+   Confidence: 0.989146
+
+53. [Sentence #232]
+   Corsetti G, Rodella L, Rezzani R, Stacchiotti A,
+Bianchi R. Cytoplasmic changes in satellite cellsof spinal ganglia induced by cisplatin treatment inrats.
+   Probability: 0.988537
+   Confidence: 0.988537
+
+

@@ -1,0 +1,18 @@
+[
+  {
+    "pdf_file": "fphar-16-1498191.pdf",
+    "old_related_count": 19,
+    "new_related_count": 19,
+    "old_total_sentences": 415,
+    "new_total_sentences": 415,
+    "difference": 0,
+    "old_confidence": 0.04578313253012048,
+    "new_confidence": 0.04578313253012048
+  },
+  {
+    "pdf_file": "zh801708001593.pdf",
+    "status": "new_analysis",
+    "new_related_count": 53,
+    "new_total_sentences": 454
+  }
+]

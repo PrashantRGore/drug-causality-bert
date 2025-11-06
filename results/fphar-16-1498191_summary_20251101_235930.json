@@ -1,0 +1,181 @@
+{
+  "pdf_file": "fphar-16-1498191.pdf",
+  "total_sentences": 415,
+  "related_sentences_count": 19,
+  "confidence_score": 0.04578313253012048,
+  "final_classification": "related",
+  "top_20_related_sentences": [
+    {
+      "sentence_number": 132,
+      "sentence": "Adalimumab, commonly used for th e treatment of severe uveitis\nassociated with juvenile idiopath ic arthritis, has been reported to\ncontribute to cataracts and glaucoma, leading to signi ﬁcant visual\nimpairment ( Lu et al., 2021 ;Fleischmann et al., 2022 ).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999256134033203,
+      "probability_not_related": 7.441736670443788e-05,
+      "probability_related": 0.9999256134033203
+    },
+    {
+      "sentence_number": 130,
+      "sentence": "Interferon Beta-1A, indicated for multiple sclerosis, was also\nidenti ﬁed as potentially associated with drug-induced cataracts.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9999172687530518,
+      "probability_not_related": 8.273626735899597e-05,
+      "probability_related": 0.9999172687530518
+    },
+    {
+      "sentence_number": 118,
+      "sentence": "Further research is warranted to elucidate the underlyingmechanisms and explore the epidemiology of bisphosphonate-related cataracts.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.999901294708252,
+      "probability_not_related": 9.867046901490539e-05,
+      "probability_related": 0.999901294708252
+    },
+    {
+      "sentence_number": 152,
+      "sentence": "In the RESONATE phase III\nmulticenter trial, among approximately 400 patients withrelapsed or refractory chronic lymphocytic leukemia (CLL) or\nsmall lymphocytic lymphoma (SLL) receiving Ibrutinib, 10%\nreported blurred vision, and 3% developed cataracts.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9998776912689209,
+      "probability_not_related": 0.00012231494474690408,
+      "probability_related": 0.9998776912689209
+    },
+    {
+      "sentence_number": 121,
+      "sentence": "Our analysis suggests thatesomeprazole may be an independent risk factor for cataracts.However, given the limited current evidence, further large-scaleRCTs are warranted to elucidate this potential risk and assess itsclinical implications comprehensively.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9998224377632141,
+      "probability_not_related": 0.00017763162031769753,
+      "probability_related": 0.9998224377632141
+    },
+    {
+      "sentence_number": 105,
+      "sentence": "Consistent with these ﬁndings, our\nmultivariate logistic regression anal ysis indicated that atorvastatin may\nbe an independent risk factor for dr ug-induced cataracts (Odds Ratio\n(OR) [95% CI]: 12 [7.6 –18]).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997759461402893,
+      "probability_not_related": 0.0002240749163320288,
+      "probability_related": 0.9997759461402893
+    },
+    {
+      "sentence_number": 129,
+      "sentence": "Consistently,\nour multivariate logistic regression analysis suggested thatRisankizumab may be an independent risk factor for cataracts.However, the precise pathogenic mechanisms remain unclear and\nwarrant further investigation.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9997592568397522,
+      "probability_not_related": 0.00024079940340016037,
+      "probability_related": 0.9997592568397522
+    },
+    {
+      "sentence_number": 93,
+      "sentence": "Bimatoprost, a prostaglandin analog commonly\nprescribed for ocular conditions, may induce cataracts by increasing\nmelanocyte activity in iris me lanocytes, leading to iris\nhyperpigmentation (reported in approximately 7% –16% of patients).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9996047616004944,
+      "probability_not_related": 0.0003952434635721147,
+      "probability_related": 0.9996047616004944
+    },
+    {
+      "sentence_number": 116,
+      "sentence": "The proposed mechanisms suggest that\nzoledronic acid may impair eye lens epithelial cell function by inducing\nlocal in ﬂammation and protein denaturati on, ultimately contributing to\ncataract formation ( Lee et al., 2020 ).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9994706511497498,
+      "probability_not_related": 0.0005294167203828692,
+      "probability_related": 0.9994706511497498
+    },
+    {
+      "sentence_number": 78,
+      "sentence": "The results identi ﬁed 15 drugs (Bimatoprost, Atorvastatin,\nZoledronic Acid, Esomeprazol e, Risankizumab, Interferon β-1,\nAdalimumab, Prednisone, Ibrutini b, Upadacitinib, Tofacitinib,\nSodium Oxybate, Tiotropium, Pomalidomide, and Lenalidomide) as\nindependent risk factors for dru g-induced cataracts.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9992732405662537,
+      "probability_not_related": 0.0007267284672707319,
+      "probability_related": 0.9992732405662537
+    },
+    {
+      "sentence_number": 154,
+      "sentence": "Additionally, a case report\nsuggested that Ibrutinib may penetrate the blood-aqueous barrier,altering the ocular microenvironment and causing plateletdysfunction and impaired ﬁbrinolysis, potentially leading to\nanterior chamber ﬁbrinoid syndrome following cataract surgery\n(Wang et al., 2025 ).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9991238713264465,
+      "probability_not_related": 0.0008760818163864315,
+      "probability_related": 0.9991238713264465
+    },
+    {
+      "sentence_number": 163,
+      "sentence": "Although no direct association between Pomalidomide\nand cataracts has been reported, a prospective study involving\nvitreoretinal lymphoma patients receiving intravitreal\nmethotrexate (MTX), Rituximab, and Lenalidomide ( R2regimen)\nas maintenance therapy identi ﬁed notable ocular toxicities,\nincluding cataracts, suggesting a potential increase in oculartoxicity risk ( Zhang et al., 2021 ).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9985234141349792,
+      "probability_not_related": 0.0014765551313757896,
+      "probability_related": 0.9985234141349792
+    },
+    {
+      "sentence_number": 115,
+      "sentence": "A study based\non Optum and MarketScan databases reported a potential associationbetween zoledronic acid treatment and an increased risk of cataracts(ROR [95% CI]: 12 [7.6 –18]).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9980400204658508,
+      "probability_not_related": 0.001959956716746092,
+      "probability_related": 0.9980400204658508
+    },
+    {
+      "sentence_number": 133,
+      "sentence": "However, in\nour study, the cataract signal associ ated with Adalimumab may represent\na false positive, potentially in ﬂuenced by underlying diseases or inadequate\ntreatment responses.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9973996877670288,
+      "probability_not_related": 0.0026003331877291203,
+      "probability_related": 0.9973996877670288
+    },
+    {
+      "sentence_number": 124,
+      "sentence": "Consistently, our multivariate\nlogistic regression analysis identi ﬁed atorvastatin as an independentrisk factor for drug-induced cataracts (OR [95% CI]: 12 [7.6 –18]).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9934896230697632,
+      "probability_not_related": 0.006510432809591293,
+      "probability_related": 0.9934896230697632
+    },
+    {
+      "sentence_number": 134,
+      "sentence": "Therefore, further research is necessary to establish adeﬁnitive causal relationship between Adalimumab and cataracts.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.993085503578186,
+      "probability_not_related": 0.006914510857313871,
+      "probability_related": 0.993085503578186
+    },
+    {
+      "sentence_number": 285,
+      "sentence": "Risk of\ncataract surgery and age-related macular degeneration after initiation of denosumab vs\nzoledronic acid for osteoporosis: a multi-database cohort study.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9910196661949158,
+      "probability_not_related": 0.00898029189556837,
+      "probability_related": 0.9910196661949158
+    },
+    {
+      "sentence_number": 74,
+      "sentence": "According to the analysis, the top ﬁve medications associated\nwith an increased risk of cataracts were Alendronic Acid (ROR =13.92, 95% CI: 12.51 –15.48, P <0.01), Ibrutinib (ROR = 5.26, 95%\nCI: 4.85 –5.70, P <0.01), Upadacitinib (ROR = 4.99, 95% CI:\n4.52–5.51, P <0.01), Tiotropium (ROR = 4.36, 95% CI:3.97–4.97, P <0.01), and Adalimumab (ROR = 2.79, 95% CI:\n2.65–2.94, P <0.01).",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.9774870276451111,
+      "probability_not_related": 0.022512955591082573,
+      "probability_related": 0.9774870276451111
+    },
+    {
+      "sentence_number": 289,
+      "sentence": "Ibrutinib alleviates\nLPS-induced neuroin ﬂammation and synaptic defects in a mouse model of depression.",
+      "prediction": "related",
+      "label": 1,
+      "confidence": 0.972852885723114,
+      "probability_not_related": 0.02714705653488636,
+      "probability_related": 0.972852885723114
+    }
+  ],
+  "threshold_used": 0.5
+}

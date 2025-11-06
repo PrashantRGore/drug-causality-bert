@@ -1,0 +1,139 @@
+{
+  "pdf_file": "fphar-16-1498191.pdf",
+  "analysis_date": "2025-11-02T00:21:49.682763",
+  "total_sentences": 415,
+  "total_drugs": 32,
+  "total_events": 8,
+  "drugs_identified": [
+    "thatRisankizumab",
+    "upadacitinib",
+    "Tofacitinib",
+    "Risankizumab",
+    "thatesomeprazole",
+    "esomeprazole",
+    "Upadacitinib",
+    "Esomeprazole",
+    "Aminobutyric Acid",
+    "denosumab",
+    "gastric acid",
+    "sodium salt",
+    "Sodium Oxybate",
+    "ustekinumab",
+    "Rituximab",
+    "zoledronic acid",
+    "atorvastatin",
+    "Daratumumab",
+    "Interferon Beta-1A",
+    "Atorvastatin",
+    "Zoledronic Acid",
+    "sodium oxybate",
+    "pamidronate",
+    "omeprazole",
+    "aminobutyric acid",
+    "Adalimumab",
+    "hydroxybutyric acid",
+    "Alendronic Acid",
+    "Ibrutinib",
+    "inUpadacitinib",
+    "Zoledronic acid",
+    "sodium in"
+  ],
+  "events_identified": [
+    "cataracts",
+    "blurred vision",
+    "glaucoma",
+    "visual impairment",
+    "adverse reaction",
+    "cataract",
+    "adverse event",
+    "visual\nimpairment"
+  ],
+  "drug_statistics": [
+    {
+      "drug": "Adalimumab",
+      "related_count": 5,
+      "max_confidence": 0.9999256134033203
+    },
+    {
+      "drug": "Interferon Beta-1A",
+      "related_count": 1,
+      "max_confidence": 0.9999172687530518
+    },
+    {
+      "drug": "Ibrutinib",
+      "related_count": 4,
+      "max_confidence": 0.9998776912689209
+    },
+    {
+      "drug": "thatesomeprazole",
+      "related_count": 1,
+      "max_confidence": 0.9998224377632141
+    },
+    {
+      "drug": "atorvastatin",
+      "related_count": 2,
+      "max_confidence": 0.9997759461402893
+    },
+    {
+      "drug": "thatRisankizumab",
+      "related_count": 1,
+      "max_confidence": 0.9997592568397522
+    },
+    {
+      "drug": "zoledronic acid",
+      "related_count": 3,
+      "max_confidence": 0.9994706511497498
+    },
+    {
+      "drug": "Atorvastatin",
+      "related_count": 1,
+      "max_confidence": 0.9992732405662537
+    },
+    {
+      "drug": "Risankizumab",
+      "related_count": 1,
+      "max_confidence": 0.9992732405662537
+    },
+    {
+      "drug": "Sodium Oxybate",
+      "related_count": 1,
+      "max_confidence": 0.9992732405662537
+    },
+    {
+      "drug": "Tofacitinib",
+      "related_count": 1,
+      "max_confidence": 0.9992732405662537
+    },
+    {
+      "drug": "Upadacitinib",
+      "related_count": 2,
+      "max_confidence": 0.9992732405662537
+    },
+    {
+      "drug": "Zoledronic Acid",
+      "related_count": 1,
+      "max_confidence": 0.9992732405662537
+    },
+    {
+      "drug": "Rituximab",
+      "related_count": 1,
+      "max_confidence": 0.9985234141349792
+    },
+    {
+      "drug": "denosumab",
+      "related_count": 1,
+      "max_confidence": 0.9910196661949158
+    },
+    {
+      "drug": "Alendronic Acid",
+      "related_count": 1,
+      "max_confidence": 0.9774870276451111
+    }
+  ],
+  "model_performance": {
+    "f1_score": 0.9759,
+    "accuracy": 0.9759,
+    "sensitivity": 0.9868,
+    "specificity": 0.965
+  }
+}

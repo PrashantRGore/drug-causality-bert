@@ -1,0 +1,35 @@
+{
+  "final_classification": "related",
+  "confidence_score": 0.04578313253012048,
+  "related_sentences": 19,
+  "total_sentences": 415,
+  "top_related_sentences": [
+    {
+      "sentence": "Adalimumab, commonly used for th e treatment of severe uveitis\nassociated with juvenile idiopath ic ",
+      "probability_related": 0.9999256134033203,
+      "confidence": 0.9999256134033203
+    },
+    {
+      "sentence": "Interferon Beta-1A, indicated for multiple sclerosis, was also\nidenti \ufb01ed as potentially associated ",
+      "probability_related": 0.9999172687530518,
+      "confidence": 0.9999172687530518
+    },
+    {
+      "sentence": "Further research is warranted to elucidate the underlyingmechanisms and explore the epidemiology of ",
+      "probability_related": 0.999901294708252,
+      "confidence": 0.999901294708252
+    },
+    {
+      "sentence": "In the RESONATE phase III\nmulticenter trial, among approximately 400 patients withrelapsed or refrac",
+      "probability_related": 0.9998776912689209,
+      "confidence": 0.9998776912689209
+    },
+    {
+      "sentence": "Our analysis suggests thatesomeprazole may be an independent risk factor for cataracts.However, give",
+      "probability_related": 0.9998224377632141,
+      "confidence": 0.9998224377632141
+    }
+  ],
+  "threshold_used": 0.5,
+  "pdf_file": "fphar-16-1498191.pdf"
+}
