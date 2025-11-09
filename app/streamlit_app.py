@@ -35,7 +35,7 @@ st.caption("BioBERT Model | F1 Score: 97.59% | Sensitivity: 98.68% | Specificity
 @st.cache_resource
 def load_model():
     try:
-        return CausalityClassifier("models/production_model_final")
+        return CausalityClassifier("PrashantRGore/drug-causality-bert-model")
     except Exception as e:
         st.error(f"Failed to load model: {e}")
         return None

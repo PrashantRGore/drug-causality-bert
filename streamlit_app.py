@@ -11,7 +11,7 @@ from src.inference import CausalityClassifier, extract_text_from_pdf, classify_c
 
 st.title("Drug Causality Classifier")
 st.caption("BioBERT Model | F1 Score: 97.59%")
-model_path = "models/production_model_final"
+model_path = "PrashantRGore/drug-causality-bert-model"
 classifier = CausalityClassifier(model_path)
 threshold = st.sidebar.slider("Classification Threshold", 0.0, 1.0, 0.5, 0.05)
 

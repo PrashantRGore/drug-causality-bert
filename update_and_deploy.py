@@ -21,7 +21,7 @@ except LookupError:
     nltk.download('punkt_tab', quiet=True)
 
 class CausalityClassifier:
-    def __init__(self, model_path='./models/production_model_final', threshold=0.5):
+    def __init__(self, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5):
         self.model_path = Path(model_path)
         self.threshold = threshold
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
@@ -47,7 +47,7 @@ def extract_text_from_pdf(pdf_path):
             text += page.extract_text()
         return text
 
-def classify_causality(pdf_text, model_path='./models/production_model_final', threshold=0.5, verbose=False):
+def classify_causality(pdf_text, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5, verbose=False):
     classifier = CausalityClassifier(model_path, threshold)
     sentences = sent_tokenize(pdf_text)
     related_count = 0
@@ -60,7 +60,7 @@ def classify_causality(pdf_text, model_path='./models/production_model_final', t
     sentence_details.sort(key=lambda x: x['probability_related'], reverse=True)
     return {'final_classification': 'related' if related_count > 0 else 'not related', 'confidence_score': related_count / len(sentences) if sentences else 0, 'related_sentences': related_count, 'total_sentences': len(sentences), 'top_related_sentences': sentence_details[:5], 'threshold_used': threshold}
 
-def process_pdf_file(pdf_path, model_path='./models/production_model_final', threshold=0.5, save_report=False, output_dir='./results'):
+def process_pdf_file(pdf_path, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5, save_report=False, output_dir='./results'):
     pdf_text = extract_text_from_pdf(pdf_path)
     results = classify_causality(pdf_text, model_path, threshold)
     results['pdf_file'] = str(Path(pdf_path).name)
@@ -70,7 +70,7 @@ def process_pdf_file(pdf_path, model_path='./models/production_model_final', thr
             json.dump(results, f, indent=2)
     return results
 
-def process_multiple_pdfs(pdf_paths, model_path='./models/production_model_final', threshold=0.5, save_reports=False, output_dir='./results'):
+def process_multiple_pdfs(pdf_paths, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5, save_reports=False, output_dir='./results'):
     all_results = []
     for pdf_path in pdf_paths:
         try:

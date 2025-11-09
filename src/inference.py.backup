@@ -1,4 +1,4 @@
-import torch
+﻿import torch
 import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from pathlib import Path
@@ -41,13 +41,13 @@ def download_nltk_data_robust():
         for attempt in range(3):  # Try 3 times
             try:
                 nltk.data.find(f'tokenizers/{package}')
-                print(f"? {package} already available")
+                print(f"✓ {package} already available")
                 break
             except LookupError:
                 try:
                     print(f"Downloading {package} (attempt {attempt + 1})...")
                     nltk.download(package, download_dir=nltk_data_dir, quiet=False)
-                    print(f"? {package} downloaded successfully")
+                    print(f"✓ {package} downloaded successfully")
                     break
                 except Exception as e:
                     print(f"Warning: Could not download {package}: {e}")
@@ -75,8 +75,8 @@ def safe_sent_tokenize(text):
         return simple_sentence_tokenize(text)
 
 class CausalityClassifier:
-    def __init__(self, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5):
-        self.model_path = model_path
+    def __init__(self, model_path='./models/production_model_final', threshold=0.5):
+        self.model_path = Path(model_path)
         self.threshold = threshold
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
         self.model = AutoModelForSequenceClassification.from_pretrained(self.model_path)
@@ -108,7 +108,7 @@ def extract_text_from_pdf(pdf_path):
             text += page.extract_text()
         return text
 
-def classify_causality(pdf_text, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5, verbose=False):
+def classify_causality(pdf_text, model_path='./models/production_model_final', threshold=0.5, verbose=False):
     classifier = CausalityClassifier(model_path, threshold)
     
     # Use safe tokenization with fallback
@@ -144,7 +144,7 @@ def classify_causality(pdf_text, model_path='PrashantRGore/drug-causality-bert-m
         'threshold_used': threshold
     }
 
-def process_pdf_file(pdf_path, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5, save_report=False, output_dir='./results'):
+def process_pdf_file(pdf_path, model_path='./models/production_model_final', threshold=0.5, save_report=False, output_dir='./results'):
     pdf_text = extract_text_from_pdf(pdf_path)
     results = classify_causality(pdf_text, model_path, threshold)
     results['pdf_file'] = str(Path(pdf_path).name)
@@ -154,7 +154,7 @@ def process_pdf_file(pdf_path, model_path='PrashantRGore/drug-causality-bert-mod
             json.dump(results, f, indent=2)
     return results
 
-def process_multiple_pdfs(pdf_paths, model_path='PrashantRGore/drug-causality-bert-model', threshold=0.5, save_reports=False, output_dir='./results'):
+def process_multiple_pdfs(pdf_paths, model_path='./models/production_model_final', threshold=0.5, save_reports=False, output_dir='./results'):
     all_results = []
     for pdf_path in pdf_paths:
         try:
@@ -167,4 +167,3 @@ def process_multiple_pdfs(pdf_paths, model_path='PrashantRGore/drug-causality-be
                 'final_classification': 'error'
             })
     return all_results
-
