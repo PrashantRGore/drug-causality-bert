@@ -1,4 +1,4 @@
-# My Deployed app link is [drug-causality-bert-k6eqkuzeuuq3ggsbxp7lcy](https://drug-causality-bert-k6eqkuzeuuq3ggsbxp7lcy.streamlit.app/)
+# My Deployed app link is https://drug-causality-bert-dqpeogrcst87jerttmlmlq.streamlit.app/
 # Drug Causality Classification
 
 BioBERT-based system for drug-adverse event causality assessment
