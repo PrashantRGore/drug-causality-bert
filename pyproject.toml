@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drug-causality-bert"
+version = "1.0.0"
+description = "BioBERT-based clinical NLP model for adverse drug event (ADE) causality detection"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Prashant R. Gore", email = "PrashantRGore@users.noreply.github.com" }
+]
+keywords = [
+    "pharmacovigilance",
+    "drug-safety",
+    "adverse-drug-reactions",
+    "clinical-nlp",
+    "biobert",
+    "text-classification"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.22.0",
+    "torch>=2.0.0",
+    "transformers>=4.35.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scikit-learn>=1.2.0",
+    "nltk>=3.8.1",
+    "pypdf>=3.17.0",
+    "requests>=2.31.0",
+    "safetensors>=0.4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/PrashantRGore/drug-causality-bert"
+"Hugging Face Model" = "https://huggingface.co/PrashantRGore/drug-causality-bert-model"
+"Issue Tracker" = "https://github.com/PrashantRGore/drug-causality-bert/issues"
+"Version 2.0" = "https://github.com/PrashantRGore/drug-causality-bert-v2"

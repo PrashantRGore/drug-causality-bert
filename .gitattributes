@@ -1,4 +1,8 @@
-\# filter=lfs diff=lfs merge=lfs -text
-only filter=lfs diff=lfs merge=lfs -text
-needed filter=lfs diff=lfs merge=lfs -text
-once filter=lfs diff=lfs merge=lfs -text
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Git LFS attributes for large model binary checkpoints
+*.safetensors filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text

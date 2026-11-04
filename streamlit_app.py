@@ -1,352 +1,309 @@
-import streamlit as st
-import tempfile
+"""
+Drug Causality BERT v1.0 - Interactive Streamlit Application
+BioBERT Adverse Drug Event (ADE) Causality Assessment
+"""
+
 import os
 import sys
+import json
+import tempfile
 from pathlib import Path
-import nltk
+import streamlit as st
 
-nltk.download('punkt')
+# Ensure project root is on sys.path
+PROJECT_ROOT = Path(__file__).resolve().parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
-# Add parent directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-# NOW THIS IMPORT WILL WORK!
 from src.inference import (
-    CausalityClassifier, 
-    extract_text_from_pdf, 
-    classify_causality, 
-    process_pdf_file, 
+    CausalityClassifier,
+    extract_text_from_pdf,
+    classify_causality,
+    process_pdf_file,
     process_multiple_pdfs
 )
 
-# App Configuration
+# Page Configuration
 st.set_page_config(
-    page_title="Drug Causality Classifier",
+    page_title="Drug Causality BERT v1.0 | Clinical Intelligence",
     page_icon="💊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Main Title
-st.title("💊 Drug Causality Classifier")
-st.caption("BioBERT Model | F1 Score: 97.59% | Sensitivity: 98.68% | Specificity: 96.50%")
+# Main Title & Subtitle
+st.title("💊 Drug Causality BERT v1.0")
+st.caption("BioBERT Clinical NLP Model | ADE Corpus V2 Benchmark | F1-Score: 97.59% | Accuracy: 97.59%")
 
-# Load model (cached)
-@st.cache_resource
-def load_model():
+# Cached Model Loader
+@st.cache_resource(show_spinner="Loading Drug Causality BioBERT model...")
+def load_classifier():
+    """Load CausalityClassifier with automatic fallback to local weights or Hugging Face Hub."""
+    token = os.environ.get("HF_TOKEN", None)
+    if token is None:
+        try:
+            token = st.secrets.get("HF_TOKEN", None)
+        except Exception:
+            token = None
     try:
-        return CausalityClassifier("PrashantRGore/drug-causality-bert-model")
+        return CausalityClassifier(hf_token=token)
     except Exception as e:
-        st.error(f"Failed to load model: {e}")
+        st.error(f"Failed to load BioBERT model: {e}")
         return None
 
-classifier = load_model()
+classifier = load_classifier()
 
-# Sidebar Configuration
-st.sidebar.header("⚙️ Configuration")
-threshold = st.sidebar.slider(
-    "Classification Threshold", 
-    min_value=0.0, 
-    max_value=1.0, 
-    value=0.5, 
-    step=0.05,
-    help="Higher threshold = stricter causality detection"
-)
+# Sidebar Configuration & Telemetry
+with st.sidebar:
+    st.header("⚙️ Configuration")
 
-st.sidebar.info(
-    "**Threshold Guide:**\n"
-    "- 0.3-0.4: High sensitivity (catch all events)\n"
-    "- 0.5: Balanced performance\n"
-    "- 0.7-0.8: High precision (reduce false alarms)"
-)
+    if classifier:
+        device_label = "CUDA (GPU)" if "cuda" in str(classifier.device) else "MPS (Apple Silicon)" if "mps" in str(classifier.device) else "CPU (Standard)"
+        source_label = "Local Weights" if Path(classifier.model_path).exists() else "Hugging Face Hub"
+        st.success(f"**BioBERT Model Active**\n- Device: `{device_label}`\n- Source: `{source_label}`")
+    else:
+        st.warning("⚠️ Model not initialized. Please check connectivity or model weights.")
 
-# Main Content
-tab1, tab2, tab3 = st.tabs(["📝 Single Text", "📄 PDF Analysis", "📁 Batch Processing"])
-
-# TAB 1: Single Text Classification
-with tab1:
-    st.header("📝 Single Statement Classification")
-    st.write("Enter medical text to classify drug-adverse event causality:")
-    
-    text_input = st.text_area(
-        "Medical Text:",
-        height=150,
-        placeholder="e.g., Patient developed severe nausea and vomiting 2 hours after taking Drug X. Clinical assessment confirmed drug-related causality."
+    threshold = st.slider(
+        "Classification Threshold",
+        min_value=0.0,
+        max_value=1.0,
+        value=0.5,
+        step=0.05,
+        help="Higher threshold = stricter causality requirements (higher precision)"
     )
-    
+
+    st.info(
+        "**Threshold Guide:**\n"
+        "- `0.3 - 0.4`: High sensitivity (safety screening)\n"
+        "- `0.5`: Balanced optimal benchmark cutoff\n"
+        "- `0.7 - 0.8`: High specificity (regulatory confirmation)"
+    )
+
+    st.markdown("---")
+    st.markdown("### 📚 Resources & Links")
+    st.markdown("- 🤗 **[Hugging Face Model](https://huggingface.co/PrashantRGore/drug-causality-bert-model)**")
+    st.markdown("- 📊 **[Synthetic FAERS 1M Dataset](https://huggingface.co/datasets/PrashantRGore/synthetic-faers-1m-v3)**")
+    st.markdown("- 🚀 **[Drug Causality BERT v2](https://github.com/PrashantRGore/drug-causality-bert-v2)**")
+    st.markdown("- 🐙 **[GitHub Repository](https://github.com/PrashantRGore/drug-causality-bert)**")
+
+# Tab Navigation
+tab1, tab2, tab3 = st.tabs(["📝 Single Statement", "📄 PDF Case Analysis", "📁 Batch PDF Processing"])
+
+# TAB 1: Single Statement Classification
+with tab1:
+    st.header("📝 Single Statement Causality Screening")
+    st.write("Input a clinical narrative statement or adverse event description to assess drug-event causality:")
+
+    default_text = "Patient developed acute urticaria, facial edema, and severe pruritus 30 minutes after taking amoxicillin. Symptoms resolved upon drug discontinuation and antihistamine administration."
+    text_input = st.text_area(
+        "Clinical Statement:",
+        value=default_text,
+        height=140,
+        placeholder="Enter adverse event description or patient case excerpt..."
+    )
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
-        if st.button("🔍 Classify Text", type="primary", use_container_width=True):
+        if st.button("🔍 Classify Causality", type="primary", use_container_width=True):
             if text_input and classifier:
-                with st.spinner("Analyzing text..."):
-                    result = classifier.predict(text_input, threshold)
-                
-                # Display Results
-                st.subheader("📊 Results")
-                
-                result_col1, result_col2 = st.columns(2)
-                
-                with result_col1:
-                    classification = result['prediction'].upper()
-                    color = "green" if result['prediction'] == 'related' else "red"
-                    st.markdown(f"**Classification:** :{color}[{classification}]")
-                
-                with result_col2:
-                    confidence_pct = result['confidence'] * 100
-                    st.metric("Confidence", f"{confidence_pct:.1f}%")
-                
-                # Probability Distribution
-                st.subheader("📈 Probability Distribution")
-                probs = result['probabilities']
-                
-                # Progress bars
-                st.write("**Related (Drug-Caused):**")
-                st.progress(probs['related'], text=f"{probs['related']:.2%}")
-                
-                st.write("**Not Related:**")
-                st.progress(probs['not_related'], text=f"{probs['not_related']:.2%}")
-                
-                # Raw JSON Output
-                with st.expander("🔍 View Raw Results"):
+                with st.spinner("Analyzing clinical statement with BioBERT..."):
+                    result = classifier.predict(text_input, threshold_or_return_probs=threshold, return_probs=True)
+
+                st.subheader("📊 Assessment Result")
+                res_col1, res_col2 = st.columns(2)
+
+                with res_col1:
+                    is_related = result["prediction"] == "related"
+                    status_text = "CAUSAL ADE (Related)" if is_related else "NON-CAUSAL (Not Related)"
+                    status_color = "green" if is_related else "red"
+                    st.markdown(f"### Classification: :{status_color}[{status_text}]")
+
+                with res_col2:
+                    conf_pct = result["confidence"] * 100
+                    st.metric("Model Confidence", f"{conf_pct:.2f}%")
+
+                # Probability Gauge
+                st.subheader("📈 Calibrated Probability Distribution")
+                probs = result["probabilities"]
+                st.write(f"**Causal ADE (Drug-Induced Event):** `{probs['related']:.2%}`")
+                st.progress(probs["related"])
+
+                st.write(f"**Non-Causal (Coincidental / Indication):** `{probs['not_related']:.2%}`")
+                st.progress(probs["not_related"])
+
+                with st.expander("🔍 View Raw JSON Output"):
                     st.json(result)
-                    
+
             elif not classifier:
-                st.error("Model not loaded properly.")
+                st.error("BioBERT model is not loaded.")
             else:
-                st.warning("Please enter text to classify.")
-    
+                st.warning("Please enter a medical statement to classify.")
+
     with col2:
         st.info(
-            "**Example Inputs:**\n\n"
-            "**Related:** _Patient developed rash after taking aspirin. Symptoms resolved after discontinuation._\n\n"
-            "**Not Related:** _Patient has a history of diabetes and hypertension. Takes metformin daily._"
+            "**Benchmark Sample Prompts:**\n\n"
+            "**Positive (Causal ADE):**\n"
+            "_Patient developed severe hepatotoxicity and elevated AST/ALT 10 days after starting methotrexate therapy._\n\n"
+            "**Negative (Indication / Control):**\n"
+            "_Patient has a documented history of chronic hypertension and was prescribed lisinopril 10 mg daily._"
         )
 
-# TAB 2: PDF Analysis
+# TAB 2: PDF Document Analysis
 with tab2:
     st.header("📄 PDF Document Analysis")
-    st.write("Upload a PDF document for comprehensive drug-adverse event analysis:")
-    
+    st.write("Upload a clinical case report, MEDLINE abstract, or regulatory CIOMS/MedWatch PDF for automated sentence-level screening:")
+
     pdf_file = st.file_uploader(
         "Choose a PDF file",
         type=["pdf"],
-        help="Upload medical documents, case reports, or clinical notes"
+        help="Upload clinical case reports or published medical literature (PDF)"
     )
-    
+
     if pdf_file and classifier:
-        # Save uploaded file temporarily
         temp_dir = tempfile.gettempdir()
         temp_path = os.path.join(temp_dir, pdf_file.name)
-        
+
         with open(temp_path, "wb") as tmp_f:
             tmp_f.write(pdf_file.getbuffer())
-        
-        # Analysis Button
-        if st.button("🔍 Analyze PDF", type="primary", use_container_width=True):
-            with st.spinner(f"Processing {pdf_file.name}..."):
+
+        if st.button("🔍 Analyze PDF Case Report", type="primary", use_container_width=True):
+            with st.spinner(f"Extracting and screening sentences from {pdf_file.name}..."):
                 try:
-                    # Extract and classify
-                    pdf_text = extract_text_from_pdf(temp_path)
-                    results = classify_causality(pdf_text, threshold=threshold)
-                    
-                    # Display Summary
-                    st.subheader("📊 Analysis Summary")
-                    
-                    summary_col1, summary_col2, summary_col3 = st.columns(3)
-                    
-                    with summary_col1:
-                        classification = results['final_classification'].upper()
-                        color = "green" if results['final_classification'] == 'related' else "red"
-                        st.markdown(f"**Overall:** :{color}[{classification}]")
-                    
-                    with summary_col2:
-                        confidence_pct = results['confidence_score'] * 100
-                        st.metric("Confidence", f"{confidence_pct:.1f}%")
-                    
-                    with summary_col3:
-                        st.metric("Total Sentences", results['total_sentences'])
-                    
-                    # Sentence Breakdown
-                    st.subheader("🔍 Sentence Analysis")
-                    
-                    breakdown_col1, breakdown_col2 = st.columns(2)
-                    
-                    with breakdown_col1:
-                        st.metric("Related Sentences", results['related_sentences'])
-                    
-                    with breakdown_col2:
-                        st.metric("Not Related", results['not_related_sentences'])
-                    
-                    # Top Related Sentences
-                    if results['related_sentences'] > 0:
-                        st.subheader("🎯 Top Related Sentences")
-                        
-                        for i, sent_detail in enumerate(results.get('top_related_sentences', []), 1):
-                            confidence = sent_detail['probability_related']
-                            confidence_color = "green" if confidence > 0.7 else "orange" if confidence > 0.5 else "red"
-                            
-                            st.markdown(f"**{i}.** ({confidence:.1%} confidence)")
-                            st.markdown(f":{confidence_color}[{sent_detail['sentence']}]")
-                            st.write("")
-                    
-                    # Download Button
-                    st.subheader("💾 Download Report")
-                    
-                    import json
+                    results = process_pdf_file(temp_path, threshold=threshold)
+
+                    st.subheader("📊 Document Analysis Summary")
+                    sum_col1, sum_col2, sum_col3 = st.columns(3)
+
+                    with sum_col1:
+                        is_related = results["final_classification"] == "related"
+                        color = "green" if is_related else "red"
+                        label = "CAUSAL EVIDENCE DETECTED" if is_related else "NO CAUSAL ADE DETECTED"
+                        st.markdown(f"**Overall Classification:** :{color}[{label}]")
+
+                    with sum_col2:
+                        conf_pct = results["confidence_score"] * 100
+                        st.metric("Related Sentence Ratio", f"{conf_pct:.1f}%")
+
+                    with sum_col3:
+                        st.metric("Total Sentences Analyzed", results["total_sentences"])
+
+                    st.subheader("🔍 Sentence Breakdown")
+                    brk_col1, brk_col2 = st.columns(2)
+                    with brk_col1:
+                        st.metric("Causal ADE Sentences", results["related_sentences"])
+                    with brk_col2:
+                        st.metric("Non-Causal Sentences", results["not_related_sentences"])
+
+                    # Top Sentences
+                    if results["related_sentences"] > 0:
+                        st.subheader("🎯 High-Confidence Causal Sentences")
+                        for i, sent_detail in enumerate(results.get("top_related_sentences", []), 1):
+                            prob = sent_detail["probability_related"]
+                            color = "green" if prob > 0.8 else "orange" if prob > 0.5 else "red"
+                            st.markdown(f"**{i}.** ({prob:.1%} probability): :{color}[{sent_detail['sentence']}]")
+
+                    # Download JSON Report
+                    st.subheader("💾 Export Findings")
                     report_json = json.dumps(results, indent=2)
-                    
                     st.download_button(
-                        label="📥 Download JSON Report",
+                        label="📥 Download JSON Causality Summary",
                         data=report_json,
-                        file_name=f"{pdf_file.name}_causality_report.json",
+                        file_name=f"{Path(pdf_file.name).stem}_causality_report.json",
                         mime="application/json"
                     )
-                    
-                    # Raw Results Expander
-                    with st.expander("🔍 View Full Results"):
-                        st.json(results)
-                        
+
                 except Exception as e:
-                    st.error(f"Error processing PDF: {str(e)}")
-                    st.info("Please ensure the PDF contains readable text and try again.")
-                
-                # Clean up temp file
+                    st.error(f"Error analyzing PDF: {e}")
                 finally:
                     try:
                         os.remove(temp_path)
-                    except:
+                    except Exception:
                         pass
 
-# TAB 3: Batch Processing
+# TAB 3: Batch PDF Processing
 with tab3:
-    st.header("📁 Batch PDF Processing")
-    st.write("Upload multiple PDF files for batch causality analysis:")
-    
+    st.header("📁 Batch PDF Document Processing")
+    st.write("Upload multiple medical documents or clinical notes for automated batch screening:")
+
     batch_files = st.file_uploader(
-        "Choose PDF files",
+        "Select Multiple PDF files",
         type=["pdf"],
         accept_multiple_files=True,
-        help="Upload multiple medical documents for batch analysis"
+        help="Upload multiple PDF case files"
     )
-    
+
     if batch_files and classifier:
-        st.write(f"**Selected files:** {len(batch_files)} PDFs")
-        
-        for i, file in enumerate(batch_files, 1):
-            st.write(f"{i}. {file.name}")
-        
-        if st.button("🔍 Process All PDFs", type="primary", use_container_width=True):
-            # Create temporary paths for all files
+        st.write(f"**Selected {len(batch_files)} documents:** " + ", ".join([f.name for f in batch_files[:5]]) + ("..." if len(batch_files) > 5 else ""))
+
+        if st.button("🚀 Process All Documents", type="primary", use_container_width=True):
             batch_temp_paths = []
             temp_dir = tempfile.gettempdir()
-            
+
             try:
-                # Save all files temporarily
-                for batch_file in batch_files:
-                    temp_path = os.path.join(temp_dir, batch_file.name)
-                    with open(temp_path, "wb") as tmp_f:
-                        tmp_f.write(batch_file.getbuffer())
-                    batch_temp_paths.append(temp_path)
-                
-                # Process all files
-                with st.spinner(f"Processing {len(batch_files)} files..."):
+                for b_file in batch_files:
+                    t_path = os.path.join(temp_dir, b_file.name)
+                    with open(t_path, "wb") as f_out:
+                        f_out.write(b_file.getbuffer())
+                    batch_temp_paths.append(t_path)
+
+                with st.spinner(f"Processing batch of {len(batch_files)} PDF documents..."):
                     batch_results = process_multiple_pdfs(batch_temp_paths, threshold=threshold)
-                
-                # Display Batch Summary
-                st.subheader("📊 Batch Analysis Summary")
-                
-                # Overall stats
+
+                st.subheader("📊 Batch Summary")
                 total_files = len(batch_results)
-                successful = len([r for r in batch_results if 'error' not in r])
-                related_count = len([r for r in batch_results if r.get('final_classification') == 'related'])
-                
-                stat_col1, stat_col2, stat_col3 = st.columns(3)
-                
-                with stat_col1:
-                    st.metric("Total Files", total_files)
-                
-                with stat_col2:
-                    st.metric("Successfully Processed", successful)
-                
-                with stat_col3:
-                    st.metric("Drug-Related Files", related_count)
-                
-                # Individual Results
-                st.subheader("📄 Individual Results")
-                
+                successful = len([r for r in batch_results if "error" not in r])
+                related_docs = len([r for r in batch_results if r.get("final_classification") == "related"])
+
+                b_col1, b_col2, b_col3 = st.columns(3)
+                with b_col1:
+                    st.metric("Total Processed", total_files)
+                with b_col2:
+                    st.metric("Successful Extractions", successful)
+                with b_col3:
+                    st.metric("Causal ADE Positive Cases", related_docs)
+
+                st.subheader("📄 Individual Document Results")
                 for i, res in enumerate(batch_results, 1):
-                    if 'error' in res:
-                        st.error(f"**{i}. {res['pdf_file']}:** Error - {res['error']}")
+                    if "error" in res:
+                        st.error(f"**{i}. {res['pdf_file']}**: Error - {res['error']}")
                     else:
-                        classification = res['final_classification'].upper()
-                        confidence = res.get('confidence_score', 0) * 100
-                        color = "green" if res['final_classification'] == 'related' else "red"
-                        
-                        st.markdown(f"**{i}. {res['pdf_file']}:** :{color}[{classification}] ({confidence:.1f}% confidence)")
-                
-                # Download Batch Summary
-                st.subheader("💾 Download Batch Report")
-                
-                import json
-                batch_report = {
-                    'summary': {
-                        'total_files': total_files,
-                        'successful': successful,
-                        'related_count': related_count,
-                        'threshold_used': threshold
+                        is_rel = res.get("final_classification") == "related"
+                        badge_color = "green" if is_rel else "gray"
+                        conf = res.get("confidence_score", 0) * 100
+                        st.markdown(f"**{i}. {res['pdf_file']}**: :{badge_color}[{res['final_classification'].upper()}] ({conf:.1f}% related sentences)")
+
+                batch_report_data = {
+                    "summary": {
+                        "total_documents": total_files,
+                        "successful_extractions": successful,
+                        "causal_cases": related_docs,
+                        "threshold": threshold
                     },
-                    'individual_results': batch_results
+                    "document_details": batch_results
                 }
-                
-                batch_json = json.dumps(batch_report, indent=2)
-                
+
                 st.download_button(
-                    label="📥 Download Batch Summary",
-                    data=batch_json,
+                    label="📥 Download Complete Batch Report (JSON)",
+                    data=json.dumps(batch_report_data, indent=2),
                     file_name="batch_causality_summary.json",
                     mime="application/json"
                 )
-                
-                # Raw Results Expander
-                with st.expander("🔍 View Full Batch Results"):
-                    st.json(batch_results)
-                    
+
             except Exception as e:
-                st.error(f"Batch processing error: {str(e)}")
-            
+                st.error(f"Batch processing error: {e}")
             finally:
-                # Clean up all temp files
-                for temp_path in batch_temp_paths:
+                for t_path in batch_temp_paths:
                     try:
-                        os.remove(temp_path)
-                    except:
+                        os.remove(t_path)
+                    except Exception:
                         pass
 
-# Footer
+# Footer & Disclaimers
 st.markdown("---")
 st.markdown(
-    "**Built with BioBERT for Pharmacovigilance** | "
-    "Developed for clinical decision support and regulatory compliance"
+    "**Drug Causality BERT v1.0** | Developed by **Prashant R. Gore** | "
+    "Designed for pharmacovigilance research and clinical decision support. "
+    "Verify findings with a qualified physician or QPPV."
 )
-
-# Sidebar additional info
-st.sidebar.markdown("---")
-st.sidebar.markdown("### 📈 Model Performance")
-st.sidebar.markdown(
-    "- **F1 Score:** 97.59%\n"
-    "- **Accuracy:** 97.59%\n"
-    "- **Sensitivity:** 98.68%\n"
-    "- **Specificity:** 96.50%"
-)
-
-st.sidebar.markdown("### 🏥 Clinical Use")
-st.sidebar.markdown(
-    "This tool assists in:\n"
-    "- Adverse event detection\n"
-    "- Pharmacovigilance screening\n"
-    "- Clinical report analysis\n"
-    "- Regulatory compliance"
-)
-
-

@@ -1,180 +1,180 @@
-﻿# 💊 Drug Causality BERT
+# 💊 Drug Causality BERT v1.0
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://drug-causality-bert-dqpeogrcst87jerttmlmlq.streamlit.app/)
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model%20Hub-orange)](https://huggingface.co/PrashantRGore/drug-causality-bert-model)
+[![ADE Corpus V2 Benchmark](https://img.shields.io/badge/ADE--V2%20Accuracy-97.59%25-brightgreen)](https://huggingface.co/datasets/SetFit/ade_corpus_v2_classification)
+[![CI Tests](https://github.com/PrashantRGore/drug-causality-bert/actions/workflows/ci.yml/badge.svg)](https://github.com/PrashantRGore/drug-causality-bert/actions)
+[![Version 2.0 Available](https://img.shields.io/badge/%F0%9F%9A%80%20Upgraded%20Version-Drug%20Causality%20BERT%20v2-purple)](https://github.com/PrashantRGore/drug-causality-bert-v2)
 
-BioBERT-based system for automated drug-adverse event causality assessment with multi-modal analysis capabilities.
+A specialized biomedical NLP system and interactive clinical decision-support application for **automated adverse drug event (ADE) causality assessment**, achieving **97.6% accuracy** on the ADE Corpus V2 benchmark.
 
-## 🚀 Live Demo
-
-**[Try the App](https://drug-causality-bert-dqpeogrcst87jerttmlmlq.streamlit.app/)**
-
-## 📊 Performance Metrics
-
-- **F1 Score**: 97.59%
-- **Accuracy**: 97.59%
-- **Sensitivity**: 98.68%
-- **Specificity**: 96.50%
-
-## ✨ Key Features
-
-- **Single Text Classification**: Instant causality assessment for individual medical statements
-- **PDF Document Analysis**: Comprehensive analysis of medical literature and case reports
-- **Batch Processing**: Process multiple documents simultaneously
-- **Configurable Threshold**: Adjust sensitivity for different use cases
-- **Model Performance Metrics**: Real-time display of model accuracy and precision
-
-## 🛠️ Installation
-
-### Prerequisites
-- Python 3.11
-- Git
-
-### Local Setup
-
-Clone the repository
-git clone https://github.com/PrashantRGore/drug-causality-bert.git
-cd drug-causality-bert
-
-Install dependencies
-pip install -r requirements.txt
-
-Run the application
-streamlit run app/streamlit_app.py
-
-
-## 📁 Project Structure
-
-drug-causality-bert/
-├── streamlit_app.py # Main Streamlit application
-├── requirements.txt # Python dependencies
-├── runtime.txt # Python version specification
-├── data/ # Dataset files
-├── models/ # Model configuration (model hosted on HF)
-├── src/
-│ ├── init.py
-│ └── inference.py # Core inference logic
-└── app/
-└── streamlit_app.py # Streamlit interface
-
-
-## 🤗 Model
-
-The BioBERT model is hosted on Hugging Face Hub:
-- **Repository**: [PrashantRGore/drug-causality-bert-model](https://huggingface.co/PrashantRGore/drug-causality-bert-model)
-- **Base Model**: BioBERT
-- **Size**: 438 MB
-- **Fine-tuned on**: ADE Corpus V2 dataset
-
-## 📊 Dataset
-
-This model was trained on the **ADE Corpus V2** dataset:
-
-**ADE Corpus V2** (Adverse Drug Event Corpus)
-- **Source**: CSIRO (Commonwealth Scientific and Industrial Research Organisation)
-- **Content**: Medical case reports annotated for drug-adverse event relationships
-- **Size**: 23,516 sentences from PubMed abstracts
-- **Annotations**: Binary classification (related/not related)
-- **Citation**: Gurulingappa et al. (2012)
-
-### Dataset Reference
-
-
-## 💻 Usage
-
-### Single Statement Classification
-
-
-### PDF Document Analysis
-
-
-### Web Interface
-
-The Streamlit app provides three main features:
-
-1. **Single Text Classification**: Enter medical text for instant causality assessment
-2. **PDF Analysis**: Upload PDF documents for comprehensive sentence-by-sentence analysis
-3. **Batch Processing**: Process multiple PDFs simultaneously with downloadable reports
-
-## 📦 Dependencies
-
-Key packages:
-- `streamlit>=1.28.0`
-- `torch>=2.5.0`
-- `transformers>=4.35.0`
-- `PyPDF2>=3.0.1`
-- `nltk>=3.7`
-- `pandas`, `numpy`, `scikit-learn`
-
-## 🔧 Configuration
-
-### Threshold Settings
-- **0.3-0.4**: High sensitivity (catch all potential events)
-- **0.5**: Balanced performance (default, recommended)
-- **0.7-0.8**: High precision (reduce false positives)
-
-### Model Architecture
-- **Base**: BioBERT (biobert-v1.1)
-- **Task**: Binary sequence classification
-- **Max Length**: 96 tokens
-- **Training**: Fine-tuned on ADE Corpus V2
-
-## 🚀 Deployment
-
-### Streamlit Cloud
-1. Fork this repository
-2. Connect to Streamlit Cloud
-3. Set main file: `app/streamlit_app.py`
-4. Deploy
-
-### Local Development
-streamlit run app/streamlit_app.py --server.port 8501
-
-
-## 📝 Citation
-
-If you use this project in your research, please cite:
-
-@software{drug_causality_bert,
-author = {Gore, Prashant R.},
-title = {Drug Causality BERT: BioBERT-based Causality Assessment System},
-year = {2025},
-url = {https://github.com/PrashantRGore/drug-causality-bert}
-}
-
-
-## 📄 License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 🐛 Issues
-
-Found a bug? Please open an issue [here](https://github.com/PrashantRGore/drug-causality-bert/issues).
-
-## 👨‍💻 Author
-
-**Prashant R. Gore**
-- GitHub: [@PrashantRGore](https://github.com/PrashantRGore)
-- Model: [Hugging Face](https://huggingface.co/PrashantRGore/drug-causality-bert-model)
-
-## 🙏 Acknowledgments
-
-- **ADE Corpus V2**: CSIRO for providing the benchmark dataset for drug-adverse event extraction
-- **BioBERT team**: For the pre-trained biomedical language model (Lee et al., 2020)
-- **Streamlit**: For the excellent web framework
-- **Hugging Face**: For model hosting infrastructure and transformers library
-
-### Key References
-
-1. **Gurulingappa, H., et al. (2012)**. "Development of a benchmark corpus to support the automatic extraction of drug-related adverse effects from medical case reports." *Journal of Biomedical Informatics*, 45(5), 885-892.
-
-2. **Lee, J., et al. (2020)**. "BioBERT: a pre-trained biomedical language representation model for biomedical text mining." *Bioinformatics*, 36(4), 1234-1240.
+> [!TIP]
+> **Looking for Version 2.0?**  
+> Check out **[Drug Causality BERT v2](https://github.com/PrashantRGore/drug-causality-bert-v2)** for live OpenFDA FAERS integration, automated MedDRA standardization, interactive Naranjo scoring, and regulatory PBRER Section 11 safety report compilation.
 
 ---
 
-**Note**: This is a research tool for educational and research purposes. Clinical decisions should always be made by qualified healthcare professionals.
+## 📌 Model & System Overview
+
+Drug Causality BERT v1.0 classifies clinical narratives, medical literature abstracts, and pharmacovigilance reports to determine whether an adverse drug reaction is causally associated with a suspect medication.
+
+- **Base Architecture:** [dmis-lab/biobert-base-cased-v1.2](https://huggingface.co/dmis-lab/biobert-base-cased-v1.2)
+- **Task:** Binary Sequence Classification (Causal ADE vs. Non-Causal / Control)
+- **Benchmark Corpus:** [ADE Corpus V2](https://huggingface.co/datasets/SetFit/ade_corpus_v2_classification) (4,271 documents, 5,063 drugs, 6,821 ADE annotations)
+- **Hugging Face Model Weights:** [PrashantRGore/drug-causality-bert-model](https://huggingface.co/PrashantRGore/drug-causality-bert-model)
+
+---
+
+## 📊 Benchmark Performance (ADE Corpus V2)
+
+| Metric | Score | Clinical Interpretation |
+| :--- | :--- | :--- |
+| **Accuracy** | **97.59%** | Robust discrimination between adverse reactions and indications |
+| **F1-Score** | **97.59%** | Balanced precision and recall across sparse medical events |
+| **Sensitivity (Recall)** | **98.68%** | High safety screening sensitivity to minimize missed signals |
+| **Specificity** | **96.50%** | Low false alarm rate on background disease and comorbidities |
+
+---
+
+## ✨ Key Features
+
+- **Single Statement Screening:** Real-time causality inference with calibrated probability progress bars.
+- **PDF Document Processing:** Extract and parse medical literature and case report PDFs (supporting modern `pypdf` with `PyPDF2` fallback).
+- **Batch Processing:** Concurrent processing of multiple clinical case reports with consolidated JSON exports.
+- **Hardware Acceleration:** Auto-detects NVIDIA CUDA GPUs, Apple Silicon MPS, or CPU environments.
+- **Dual Model Loading:** Automatically uses local model weights if present, with transparent fallback to Hugging Face Model Hub.
+- **Configurable Threshold:** Interactive sensitivity/specificity slider for strict regulatory vs. exploratory screening.
+
+---
+
+## 🚀 Quick Start & Installation
+
+### 1. Clone & Install Dependencies
+
+```bash
+# Clone the repository
+git clone https://github.com/PrashantRGore/drug-causality-bert.git
+cd drug-causality-bert
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Python Inference
+
+```python
+from src.inference import CausalityClassifier
+
+# Automatically resolves local weights or downloads from Hugging Face Hub
+classifier = CausalityClassifier()
+
+statement = "Patient developed acute anaphylaxis and severe rash within 20 minutes of amoxicillin administration."
+result = classifier.predict(statement, return_probs=True)
+
+print(f"Prediction: {result['prediction'].upper()}")
+print(f"Confidence: {result['confidence']:.2%}")
+print(f"Causal Probability: {result['probabilities']['related']:.2%}")
+```
+
+**Output:**
+```text
+Prediction: RELATED
+Confidence: 99.99%
+Causal Probability: 99.99%
+```
+
+### 3. Launch Interactive Streamlit App
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The web application provides 3 dedicated operational tabs:
+1. **📝 Single Statement:** Fast clinical sentence screening with confidence gauges.
+2. **📄 PDF Case Analysis:** Document-level text extraction, sentence ranking, and JSON summary export.
+3. **📁 Batch Processing:** Multi-document screening with aggregate metrics and batch report generation.
+
+### 4. Running Automated Tests
+
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+---
+
+## 📂 Project Architecture
+
+```text
+drug-causality-bert/
+├── .github/workflows/
+│   └── ci.yml                     # Automated GitHub Actions test workflow
+├── app/
+│   ├── requirements.txt           # App dependencies
+│   └── streamlit_app.py           # Synchronized application entrypoint
+├── models/
+│   └── production_model_final/    # Model configuration, tokenizer & safetensors
+├── src/
+│   ├── __init__.py                # Package initialization
+│   └── inference.py               # BioBERT causality engine & PDF parser
+├── tests/
+│   └── test_v1_components.py      # Automated unit test suite (6/6 tests passing)
+├── .gitattributes                 # Git LFS attributes
+├── .gitignore                     # Git ignore patterns
+├── LICENSE                        # Apache 2.0 License
+├── pyproject.toml                 # Modern PEP 518/621 package metadata
+├── requirements.txt               # Unified project dependencies
+├── streamlit_app.py               # Main Streamlit web application
+└── README.md                      # Comprehensive project documentation
+```
+
+---
+
+## 🔒 Ethical Safeguards & Regulatory Compliance
+
+- **Research & Decision Support:** This software is designed to augment safety scientists, QPPVs, and medical reviewers. Final causality determinations require qualified medical evaluation.
+- **Patient Privacy:** The underlying model was trained exclusively on open-access scientific publications (MEDLINE). De-identification of patient records is required prior to processing clinical PDFs.
+- **Zero Cost / Open Source:** Built on 100% free open-source tools with zero paid API dependencies.
+
+---
+
+## 📜 Citation
+
+If you utilize this model or codebase in your pharmacovigilance research, please cite:
+
+```bibtex
+@misc{gore2025drugcausalityv1,
+  author       = {Gore, Prashant R.},
+  title        = {Drug Causality BERT: BioBERT for Automated Pharmacovigilance ADE Detection},
+  year         = {2025},
+  publisher    = {GitHub},
+  howpublished = {\url{https://github.com/PrashantRGore/drug-causality-bert}}
+}
+
+@article{gurulingappa2012ade,
+  title        = {Development of a benchmark corpus to support the automatic extraction of drug-related adverse effects from medical case reports},
+  author       = {Gurulingappa, Harsha and Rajput, Abdul Mateen and Roberts, Angus and Fluck, Juliane and Hofmann-Apitius, Martin and Toldo, Luca},
+  journal      = {Journal of Biomedical Informatics},
+  volume       = {45},
+  number       = {5},
+  pages        = {885--892},
+  year         = {2012},
+  publisher    = {Elsevier}
+}
+```
+
+---
+
+## 📄 License
+
+Distributed under the **Apache-2.0 License**. See [`LICENSE`](LICENSE) for full details.
+
+---
+
+## 👤 Author & Support
+
+- **Author:** Prashant R. Gore
+- **GitHub:** [@PrashantRGore](https://github.com/PrashantRGore)
+- **LinkedIn:** [linkedin.com/in/prashantgorepg](https://linkedin.com/in/prashantgorepg)
+- **Hugging Face:** [@PrashantRGore](https://huggingface.co/PrashantRGore)
+- **Issue Tracker:** [Report an Issue](https://github.com/PrashantRGore/drug-causality-bert/issues)
